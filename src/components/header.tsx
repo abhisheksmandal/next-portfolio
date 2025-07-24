@@ -89,7 +89,7 @@ export function Header() {
         "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
         isMobileMenuOpen ? "max-h-screen" : "max-h-0"
       )}>
-        <nav className="flex flex-col items-center space-y-4 py-4 bg-background/95 backdrop-blur-md">
+        <nav className="flex flex-col items-center space-y-4 py-4 bg-background/80 backdrop-blur-lg">
           {navLinks.map((link) => (
             <Link
               key={link.href}
