@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { AWSIcon, DockerIcon, JenkinsIcon, KubernetesIcon, TerraformIcon, GitIcon } from './icons';
+import { AWSIcon, DockerIcon, JenkinsIcon, KubernetesIcon, TerraformIcon, GitIcon, AnsibleIcon, PrometheusIcon, GrafanaIcon, PythonIcon, GCPIcon } from './icons';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip';
 
 const skills = [
@@ -7,6 +7,11 @@ const skills = [
     name: 'AWS',
     icon: <AWSIcon className="w-12 h-12" />,
     description: 'Cloud services for compute, storage, and databases.',
+  },
+  {
+    name: 'GCP',
+    icon: <GCPIcon className="w-12 h-12" />,
+    description: 'Cloud computing services by Google Cloud.',
   },
   {
     name: 'Docker',
@@ -24,6 +29,11 @@ const skills = [
     description: 'Infrastructure as Code software tool.',
   },
   {
+    name: 'Ansible',
+    icon: <AnsibleIcon className="w-12 h-12" />,
+    description: 'Configuration management and application-deployment tool.',
+  },
+  {
     name: 'Jenkins',
     icon: <JenkinsIcon className="w-12 h-12" />,
     description: 'Automation server for building, testing, and deploying code.',
@@ -32,6 +42,21 @@ const skills = [
     name: 'Git',
     icon: <GitIcon className="w-12 h-12 stroke-current" />,
     description: 'Distributed version control system for tracking changes.',
+  },
+  {
+    name: 'Python',
+    icon: <PythonIcon className="w-12 h-12" />,
+    description: 'High-level programming language for scripting and automation.',
+  },
+  {
+    name: 'Prometheus',
+    icon: <PrometheusIcon className="w-12 h-12" />,
+    description: 'Open-source monitoring and alerting toolkit.',
+  },
+  {
+    name: 'Grafana',
+    icon: <GrafanaIcon className="w-12 h-12" />,
+    description: 'Multi-platform open source analytics and interactive visualization web application.',
   },
 ];
 
