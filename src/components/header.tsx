@@ -43,7 +43,7 @@ export function Header() {
     handleScroll(); // Set initial active section
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [navLinks]);
+  }, []);
 
 
   return (
@@ -56,7 +56,7 @@ export function Header() {
           {navLinks.map((link) => (
             <Link
               key={link.href}
-              href={link.href}
+              href={link.id === 'blog' ? link.href : `/#${link.id}`}
               className={cn(
                 "text-sm font-medium transition-colors",
                 activeSection === link.id ? "text-primary font-bold" : "text-foreground/80 hover:text-primary"
@@ -80,7 +80,7 @@ export function Header() {
                     {navLinks.map((link) => (
                     <Link
                         key={link.href}
-                        href={link.href}
+                        href={link.id === 'blog' ? link.href : `/#${link.id}`}
                         className={cn(
                             "text-lg font-medium transition-colors",
                              activeSection === link.id ? "text-primary font-bold" : "text-foreground hover:text-primary"

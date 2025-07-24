@@ -1,6 +1,5 @@
 
 import { PipelineVisualization } from "@/components/pipeline-visualization";
-import { InteractiveTerminal } from "@/components/interactive-terminal";
 import { SkillShowcase } from "@/components/skill-showcase";
 import { ContactForm } from "@/components/contact-form";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -127,13 +126,6 @@ export default function Home() {
             <Link href="/blog">View All Posts</Link>
           </Button>
         </div>
-      </section>
-
-      <Separator className="my-8" />
-
-      {/* Interactive Terminal Section */}
-      <section id="terminal" className="container mx-auto px-4 w-full">
-        <InteractiveTerminal />
       </section>
 
       <Separator className="my-8" />
