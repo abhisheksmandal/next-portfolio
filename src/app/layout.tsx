@@ -29,6 +29,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <div className="digital-rain-container">
+            {Array.from({ length: 100 }).map((_, i) => (
+              <div key={i} className="digital-rain-column"></div>
+            ))}
+          </div>
           <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-grow">{children}</main>
