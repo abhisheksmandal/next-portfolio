@@ -7,11 +7,12 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, ArrowRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { posts } from "@/lib/posts";
 import { Badge } from "@/components/ui/badge";
 import { ProjectDetailsModal } from "@/components/project-details-modal";
+import { JourneyTimeline } from "@/components/journey-timeline";
 
 export default function Home() {
   const latestPosts = posts.slice(0, 2);
@@ -58,9 +59,10 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center space-y-20 md:space-y-32 overflow-x-hidden">
+       <div className="fixed inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"><div className="fixed left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-primary/10 blur-[100px]"></div></div>
       {/* Hero Section */}
       <section id="hero" className="w-full text-center pt-20 md:pt-32">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 animate-fade-in-up">
           <h1 className="text-4xl md:text-6xl font-bold font-headline bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary animate-gradient-x">
             DevOps Virtuoso
           </h1>
@@ -77,7 +79,7 @@ export default function Home() {
       <Separator className="my-8" />
 
       {/* About Section */}
-      <section id="about" className="container mx-auto px-4 w-full">
+      <section id="about" className="container mx-auto px-4 w-full animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
         <div className="grid md:grid-cols-3 gap-12 items-center">
             <div className="md:col-span-1">
                 <Image src="https://placehold.co/400x400.png" alt="Profile picture" width={400} height={400} className="rounded-full mx-auto shadow-lg border-4 border-primary/20" data-ai-hint="man portrait" />
@@ -94,15 +96,30 @@ export default function Home() {
       <Separator className="my-8" />
 
       {/* Skills Section */}
-      <section id="skills" className="container mx-auto px-4 text-center w-full">
+      <section id="skills" className="container mx-auto px-4 text-center w-full animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
         <h2 className="text-3xl md:text-4xl font-bold font-headline mb-12">Core Technologies</h2>
         <SkillShowcase />
       </section>
 
       <Separator className="my-8" />
+      
+      {/* Journey Preview Section */}
+      <section id="journey-preview" className="container mx-auto px-4 w-full animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+        <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">My Journey</h2>
+        <JourneyTimeline limit={3} />
+        <div className="text-center mt-12">
+          <Button asChild>
+            <Link href="/journey">
+              View Full Journey <ArrowRight className="ml-2" />
+            </Link>
+          </Button>
+        </div>
+      </section>
+      
+      <Separator className="my-8" />
 
       {/* Projects Section */}
-      <section id="projects" className="container mx-auto px-4 w-full">
+      <section id="projects" className="container mx-auto px-4 w-full animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
         <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">Featured Projects</h2>
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
@@ -134,7 +151,7 @@ export default function Home() {
       <Separator className="my-8" />
       
       {/* Blog Preview Section */}
-      <section id="blog" className="container mx-auto px-4 w-full">
+      <section id="blog" className="container mx-auto px-4 w-full animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
         <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">Latest Articles</h2>
         <div className="grid md:grid-cols-2 gap-8">
           {latestPosts.map((post) => (
@@ -161,7 +178,7 @@ export default function Home() {
       <Separator className="my-8" />
       
       {/* Contact Section */}
-      <section id="contact" className="container mx-auto px-4 w-full pb-20 md:pb-32">
+      <section id="contact" className="container mx-auto px-4 w-full pb-20 md:pb-32 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
         <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">Get In Touch</h2>
         <div className="max-w-xl mx-auto">
           <Card className="light:bg-white/40 dark:bg-card/60 light:backdrop-blur-lg p-4 md:p-8">
