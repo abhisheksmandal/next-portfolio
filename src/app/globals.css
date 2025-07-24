@@ -80,9 +80,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  
   .dark body {
-    background-color: hsl(var(--background));
-    overflow: hidden; /* Prevent scrollbars from the canvas */
+    background: hsl(var(--background));
+    overflow: hidden;
   }
 
   .dark body::before {
@@ -93,24 +94,19 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: 
-      /* The glowing rain effect */
-      linear-gradient(transparent, hsla(var(--primary), 0.1) 20%, hsla(var(--primary), 0.2) 50%, transparent),
-      /* The falling characters */
-      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 100"><text fill="hsl(var(--primary))" fill-opacity="0.5" font-family="monospace" font-size="10" y="0"><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan></text><text fill="hsl(var(--primary))" fill-opacity="0.5" font-family="monospace" font-size="10" y="0" transform="translate(10, 20)"><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan></text><text fill="hsl(var(--primary))" fill-opacity="0.5" font-family="monospace" font-size="10" y="0" transform="translate(20, -10)"><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">1</tspan></text></svg>');
-    
-    animation: digital-rain 2s linear infinite;
-    text-shadow: 0 0 5px hsla(var(--primary), 0.8), 0 0 10px hsla(var(--primary), 0.8);
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 29px,
+      hsl(var(--primary) / 0.1) 30px,
+      hsl(var(--primary) / 0.1) 31px
+    );
+    background-size: 100% 31px;
+    animation: digital-rain-static 0.5s linear infinite;
   }
 }
 
-@keyframes digital-rain {
-  from {
-    background-position: 0 0, 0 0, 10px 20px, 20px -10px;
-    opacity: 1;
-  }
-  to {
-    background-position: 0 200px, 0 0, 10px 220px, 20px 190px;
-    opacity: 0;
-  }
+@keyframes digital-rain-static {
+  from { background-position-y: 0; }
+  to { background-position-y: -31px; }
 }
