@@ -27,51 +27,34 @@ export default function JourneyPage() {
 
         <div className="space-y-12">
             {journey.map((event, index) => (
-            <div key={index} className="grid grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr] gap-x-4 items-start">
-                {/* Left side content (desktop) */}
-                <div className={cn("md:text-right", index % 2 === 0 ? "md:block" : "md:hidden")}>
+            <div key={index} className="relative md:grid md:grid-cols-2 md:gap-x-8 items-start">
+                {/* Commit Node */}
+                <div className="absolute left-4 md:left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-background border-2 border-primary">
+                    {event.type === 'certification' ? <GitBranch className="w-4 h-4 text-primary" /> : <GitCommit className="w-4 h-4 text-primary" />}
+                </div>
+
+                {/* Card Content */}
+                <div className={cn(
+                    "ml-12 md:ml-0",
+                    index % 2 === 0 ? 'md:col-start-1 md:text-right' : 'md:col-start-2 md:text-left'
+                )}>
                     <Card className="light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 transform hover:-translate-y-1">
                         <CardHeader>
-                            <div className="flex flex-col md:flex-row-reverse justify-between items-start text-right">
-                                <div>
+                           <div className={cn(
+                               "flex flex-col items-start",
+                               index % 2 === 0 ? 'md:items-end' : 'md:items-start'
+                           )}>
+                                <div className={cn("flex items-center text-sm text-muted-foreground whitespace-nowrap", index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row' )}>
+                                    <event.icon className="w-4 h-4 mx-2" />
+                                    <span>{event.date}</span>
+                                </div>
+                                <div className={cn('mt-2', index % 2 === 0 ? 'md:text-right' : 'md:text-left')}>
                                     <CardTitle className="font-headline">{event.title}</CardTitle>
                                     <p className="text-sm text-muted-foreground pt-1">{event.institution}</p>
                                 </div>
-                                <div className="flex items-center text-sm text-muted-foreground whitespace-nowrap mt-2 md:mt-0 md:mr-4">
-                                    <event.icon className="w-4 h-4 mr-2 md:mr-0 md:ml-2 order-first md:order-last" />
-                                    <span>{event.date}</span>
-                                </div>
                             </div>
                         </CardHeader>
-                        <CardContent className="text-right">
-                            <CardDescription>{event.description}</CardDescription>
-                        </CardContent>
-                    </Card>
-                </div>
-
-                {/* Commit Node */}
-                <div className="flex flex-col items-center">
-                    <div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-background border-2 border-primary">
-                        {event.type === 'certification' ? <GitBranch className="w-4 h-4 text-primary" /> : <GitCommit className="w-4 h-4 text-primary" />}
-                    </div>
-                </div>
-
-                {/* Right side content (desktop) and all mobile content */}
-                <div className={cn(index % 2 !== 0 ? "md:block" : "md:hidden")}>
-                     <Card className="light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 transform hover:-translate-y-1">
-                        <CardHeader>
-                           <div className="flex flex-col md:flex-row justify-between items-start text-left">
-                                <div>
-                                    <CardTitle className="font-headline">{event.title}</CardTitle>
-                                    <p className="text-sm text-muted-foreground pt-1">{event.institution}</p>
-                                </div>
-                                <div className="flex items-center text-sm text-muted-foreground whitespace-nowrap mt-2 md:mt-0 md:ml-4">
-                                    <event.icon className="w-4 h-4 mr-2" />
-                                    <span>{event.date}</span>
-                                </div>
-                            </div>
-                        </CardHeader>
-                        <CardContent className="text-left">
+                        <CardContent>
                             <CardDescription>{event.description}</CardDescription>
                         </CardContent>
                     </Card>
