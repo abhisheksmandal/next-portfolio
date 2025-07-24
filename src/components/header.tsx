@@ -1,15 +1,16 @@
+
 "use client"
 
 import Link from "next/link"
 import { ThemeToggle } from "./theme-toggle"
 import { Button } from "./ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
-import { Menu } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 
 export function Header() {
   const [activeSection, setActiveSection] = useState("")
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const navLinks = [
     { id: "about", href: "#about", label: "About" },
@@ -26,11 +27,12 @@ export function Header() {
       const scrollPosition = window.scrollY + 150; // Add offset
 
       let currentSection = "";
-      sections.forEach(section => {
+      for (const section of sections) {
         if (section && section.offsetTop <= scrollPosition && section.offsetTop + section.offsetHeight > scrollPosition) {
           currentSection = section.id;
+          break;
         }
-      });
+      }
       
       const blogLink = navLinks.find(l => l.id === 'blog');
       const journeyLink = navLinks.find(l => l.id === 'journey');
@@ -47,8 +49,11 @@ export function Header() {
     handleScroll(); // Set initial active section
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navLinks]);
 
+  const handleLinkClick = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
@@ -73,31 +78,32 @@ export function Header() {
         <div className="flex items-center space-x-2">
             <ThemeToggle />
             <div className="md:hidden">
-            <Sheet>
-                <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                    <Menu />
-                </Button>
-                </SheetTrigger>
-                <SheetContent side="right">
-                <nav className="flex flex-col space-y-4 pt-8">
-                    {navLinks.map((link) => (
-                    <Link
-                        key={link.href}
-                        href={link.href.startsWith('/') ? link.href : `/#${link.id}`}
-                        className={cn(
-                            "text-lg font-medium transition-colors",
-                             activeSection === link.id ? "text-primary font-bold" : "text-foreground hover:text-primary"
-                        )}
-                    >
-                        {link.label}
-                    </Link>
-                    ))}
-                </nav>
-                </SheetContent>
-            </Sheet>
+              <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                {isMobileMenuOpen ? <X /> : <Menu />}
+              </Button>
             </div>
         </div>
+      </div>
+      {/* Mobile Menu */}
+      <div className={cn(
+        "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
+        isMobileMenuOpen ? "max-h-screen" : "max-h-0"
+      )}>
+        <nav className="flex flex-col items-center space-y-4 py-4 bg-background/95 backdrop-blur-md">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href.startsWith('/') ? link.href : `/#${link.id}`}
+              onClick={handleLinkClick}
+              className={cn(
+                  "text-lg font-medium transition-colors w-full text-center py-2",
+                   activeSection === link.id ? "text-primary font-bold bg-primary/10" : "text-foreground hover:text-primary hover:bg-primary/5"
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
       </div>
     </header>
   )
