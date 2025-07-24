@@ -1,7 +1,9 @@
-import { journey } from "@/lib/journey";
+
+import { journey, JourneyEvent } from "@/lib/journey";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { GitCommit } from "lucide-react";
+import { GitCommit, GitBranch } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
   title: "My Journey | DevOps Virtuoso",
@@ -19,35 +21,63 @@ export default function JourneyPage() {
       </header>
       <Separator className="mb-12" />
 
-      <div className="relative pl-8">
+      <div className="relative">
         {/* The main branch line */}
-        <div className="absolute left-8 top-0 h-full w-0.5 bg-primary/20"></div>
+        <div className="absolute left-1/2 top-0 h-full w-0.5 bg-primary/20 -translate-x-1/2"></div>
 
         {journey.map((event, index) => (
-          <div key={index} className="mb-12 relative">
-            {/* The "commit" node */}
-            <div className="absolute -left-[1.5rem] top-1.5 flex h-10 w-10 items-center justify-center rounded-full bg-background border-2 border-primary">
-                <GitCommit className="w-6 h-6 text-primary" />
-            </div>
+          <div key={index} className={cn("mb-12 flex justify-center", event.branch && "md:justify-start")}>
+             <div className={cn(
+                "relative w-full md:w-1/2",
+                event.branch === 'left' && "md:pr-8 md:text-right",
+                event.branch === 'right' && "md:pl-8 md:self-end",
+                !event.branch && "md:pl-8"
+             )}>
+                {/* Branch line */}
+                {event.branch && (
+                   <div className={cn(
+                    "hidden md:block absolute top-1.5 h-0.5 w-8 bg-primary/20",
+                    event.branch === 'left' && 'right-0 -translate-x-2',
+                    event.branch === 'right' && 'left-0 translate-x-2'
+                   )}></div>
+                )}
+                
+                {/* The "commit" node */}
+                <div className={cn(
+                    "absolute top-1.5 flex h-10 w-10 items-center justify-center rounded-full bg-background border-2 border-primary",
+                    !event.branch && "-left-[21px] md:left-1/2 md:-translate-x-1/2",
+                    event.branch && "-left-[21px]",
+                    event.branch === 'left' && "md:right-[-2.5rem] md:left-auto",
+                    event.branch === 'right' && "md:left-[-2.5rem]"
+                )}>
+                    {event.branch ? <GitBranch className="w-6 h-6 text-primary" /> : <GitCommit className="w-6 h-6 text-primary" />}
+                </div>
 
-            <div className="ml-8">
-              <Card className="light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 transform hover:-translate-y-1">
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div>
-                        <CardTitle className="font-headline">{event.title}</CardTitle>
-                        <p className="text-sm text-muted-foreground pt-1">{event.institution}</p>
-                    </div>
-                    <div className="flex items-center text-sm text-muted-foreground whitespace-nowrap">
-                        <event.icon className="w-4 h-4 mr-2" />
-                        <span>{event.date}</span>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>{event.description}</CardDescription>
-                </CardContent>
-              </Card>
+                <div className="ml-12 md:ml-0">
+                  <Card className="light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 transform hover:-translate-y-1">
+                    <CardHeader>
+                      <div className={cn(
+                          "flex flex-col md:flex-row justify-between items-start",
+                          event.branch === 'left' && "md:flex-row-reverse"
+                      )}>
+                        <div className={cn("text-left", event.branch === 'left' && "md:text-right")}>
+                            <CardTitle className="font-headline">{event.title}</CardTitle>
+                            <p className="text-sm text-muted-foreground pt-1">{event.institution}</p>
+                        </div>
+                        <div className={cn(
+                            "flex items-center text-sm text-muted-foreground whitespace-nowrap mt-2 md:mt-0",
+                            event.branch === 'left' ? "md:ml-4" : "md:ml-4",
+                        )}>
+                            <event.icon className="w-4 h-4 mr-2" />
+                            <span>{event.date}</span>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className={cn("text-left", event.branch === 'left' && "md:text-right")}>
+                      <CardDescription>{event.description}</CardDescription>
+                    </CardContent>
+                  </Card>
+                </div>
             </div>
           </div>
         ))}
