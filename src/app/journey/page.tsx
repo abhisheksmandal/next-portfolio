@@ -28,8 +28,8 @@ export default function JourneyPage() {
         <div className="space-y-12">
             {journey.map((event, index) => (
             <div key={index} className="grid grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr] gap-x-4 items-start">
-                {/* Left side content */}
-                <div className={cn("hidden md:block", index % 2 === 0 ? "text-right" : "hidden")}>
+                {/* Left side content (desktop) */}
+                <div className={cn("md:text-right", index % 2 === 0 ? "md:block" : "md:hidden")}>
                     <Card className="light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 transform hover:-translate-y-1">
                         <CardHeader>
                             <div className="flex flex-col md:flex-row-reverse justify-between items-start text-right">
@@ -56,29 +56,8 @@ export default function JourneyPage() {
                     </div>
                 </div>
 
-                {/* Right side content */}
-                <div className={cn(index % 2 !== 0 ? "" : "md:hidden")}>
-                     <Card className="light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 transform hover:-translate-y-1">
-                        <CardHeader>
-                           <div className="flex flex-col md:flex-row justify-between items-start text-left">
-                                <div>
-                                    <CardTitle className="font-headline">{event.title}</CardTitle>
-                                    <p className="text-sm text-muted-foreground pt-1">{event.institution}</p>
-                                </div>
-                                <div className="flex items-center text-sm text-muted-foreground whitespace-nowrap mt-2 md:mt-0 md:ml-4">
-                                    <event.icon className="w-4 h-4 mr-2" />
-                                    <span>{event.date}</span>
-                                </div>
-                            </div>
-                        </CardHeader>
-                        <CardContent className="text-left">
-                            <CardDescription>{event.description}</CardDescription>
-                        </CardContent>
-                    </Card>
-                </div>
-
-                 {/* Mobile-only Left side content */}
-                 <div className={cn("md:hidden", index % 2 === 0 ? "" : "hidden")}>
+                {/* Right side content (desktop) and all mobile content */}
+                <div className={cn(index % 2 !== 0 ? "md:block" : "md:hidden")}>
                      <Card className="light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 transform hover:-translate-y-1">
                         <CardHeader>
                            <div className="flex flex-col md:flex-row justify-between items-start text-left">
