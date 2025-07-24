@@ -9,6 +9,7 @@ import Link from "next/link";
 import { Github, ExternalLink } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { posts } from "@/lib/posts";
+import { Badge } from "@/components/ui/badge";
 
 export default function Home() {
   const latestPosts = posts.slice(0, 2);
@@ -143,12 +144,4 @@ export default function Home() {
       </section>
     </div>
   );
-}
-
-function Badge({ variant, children }: { variant: "secondary", children: React.ReactNode }) {
-    return (
-        <div className="px-3 py-1 text-sm font-medium rounded-full bg-secondary text-secondary-foreground">
-            {children}
-        </div>
-    )
 }
