@@ -29,8 +29,8 @@ export function JourneyTimeline({ limit }: JourneyTimelineProps) {
                 className={cn(
                   "hidden md:block absolute top-7 -translate-y-1/2 h-0.5 bg-primary/30",
                   index % 2 === 0 
-                    ? "right-1/2 w-[calc(50%_-_1rem)]" 
-                    : "left-1/2 w-[calc(50%_-_1rem)]"
+                    ? "right-1/2 w-[calc(50%_-_4rem)]" 
+                    : "left-1/2 w-[calc(50%_-_4rem)]"
                 )}
               ></div>
 
