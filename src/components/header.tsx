@@ -15,6 +15,7 @@ export function Header() {
     { id: "about", href: "#about", label: "About" },
     { id: "skills", href: "#skills", label: "Skills" },
     { id: "projects", href: "#projects", label: "Projects" },
+    { id: "journey", href: "/journey", label: "Journey" },
     { id: "blog", href: "/blog", label: "Blog" },
     { id: "contact", href: "#contact", label: "Contact" },
   ]
@@ -32,8 +33,11 @@ export function Header() {
       });
       
       const blogLink = navLinks.find(l => l.id === 'blog');
+      const journeyLink = navLinks.find(l => l.id === 'journey');
       if (blogLink && window.location.pathname.startsWith(blogLink.href)) {
         setActiveSection('blog');
+      } else if (journeyLink && window.location.pathname.startsWith(journeyLink.href)) {
+        setActiveSection('journey');
       } else {
         setActiveSection(currentSection);
       }
@@ -56,7 +60,7 @@ export function Header() {
           {navLinks.map((link) => (
             <Link
               key={link.href}
-              href={link.id === 'blog' ? link.href : `/#${link.id}`}
+              href={link.href.startsWith('/') ? link.href : `/#${link.id}`}
               className={cn(
                 "text-sm font-medium transition-colors",
                 activeSection === link.id ? "text-primary font-bold" : "text-foreground/80 hover:text-primary"
@@ -80,7 +84,7 @@ export function Header() {
                     {navLinks.map((link) => (
                     <Link
                         key={link.href}
-                        href={link.id === 'blog' ? link.href : `/#${link.id}`}
+                        href={link.href.startsWith('/') ? link.href : `/#${link.id}`}
                         className={cn(
                             "text-lg font-medium transition-colors",
                              activeSection === link.id ? "text-primary font-bold" : "text-foreground hover:text-primary"
