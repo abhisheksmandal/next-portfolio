@@ -81,19 +81,36 @@ body {
     -moz-osx-font-smoothing: grayscale;
   }
   .dark body {
-    background-image:
-      radial-gradient(ellipse at center, hsl(var(--background)) 0%, hsl(var(--background)) 50%, transparent 100%),
-      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 1000"><g fill-opacity="0.5" fill="hsl(var(--primary))" style="filter: drop-shadow(0 0 0.5rem hsl(var(--primary)));"><text y="-100" font-size="12" font-family="monospace"><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><tspan x="0" dy="1em">1 0 1 0 1 1 0 0 1 0</tspan><tspan x="0" dy="1em">0 1 0 1 0 0 1 1 0 1</tspan><animation attributeName="y" from="-100" to="1000" dur="10s" repeatCount="indefinite" /></text></g></svg>');
-    animation: digital-rain 10s linear infinite;
+    background-color: hsl(var(--background));
+    overflow: hidden; /* Prevent scrollbars from the canvas */
   }
 
-  @keyframes digital-rain {
-    from {
-        background-position: center, 0 0;
-    }
-    to {
-        background-position: center, 0 1000px;
-    }
+  .dark body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: 
+      /* The glowing rain effect */
+      linear-gradient(transparent, hsla(var(--primary), 0.1) 20%, hsla(var(--primary), 0.2) 50%, transparent),
+      /* The falling characters */
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 100"><text fill="hsl(var(--primary))" fill-opacity="0.5" font-family="monospace" font-size="10" y="0"><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan></text><text fill="hsl(var(--primary))" fill-opacity="0.5" font-family="monospace" font-size="10" y="0" transform="translate(10, 20)"><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan></text><text fill="hsl(var(--primary))" fill-opacity="0.5" font-family="monospace" font-size="10" y="0" transform="translate(20, -10)"><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">0</tspan><tspan x="0" dy="1em">1</tspan><tspan x="0" dy="1em">1</tspan></text></svg>');
+    
+    animation: digital-rain 2s linear infinite;
+    text-shadow: 0 0 5px hsla(var(--primary), 0.8), 0 0 10px hsla(var(--primary), 0.8);
   }
+}
 
+@keyframes digital-rain {
+  from {
+    background-position: 0 0, 0 0, 10px 20px, 20px -10px;
+    opacity: 1;
+  }
+  to {
+    background-position: 0 200px, 0 0, 10px 220px, 20px 190px;
+    opacity: 0;
+  }
 }
