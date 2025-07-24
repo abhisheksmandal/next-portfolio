@@ -30,8 +30,15 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="digital-rain-container">
-            {Array.from({ length: 100 }).map((_, i) => (
-              <div key={i} className="digital-rain-column"></div>
+            {Array.from({ length: 50 }).map((_, i) => (
+              <div 
+                key={i} 
+                className="digital-rain-column"
+                style={{
+                  '--fall-duration': `${Math.random() * 10 + 10}s`, // Slower: 10s to 20s
+                  '--fall-delay': `${Math.random() * -20}s`, // Staggered start
+                } as React.CSSProperties}
+              ></div>
             ))}
           </div>
           <div className="flex flex-col min-h-screen">

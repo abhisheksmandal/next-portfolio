@@ -100,6 +100,7 @@ body {
   overflow: hidden;
   z-index: -1;
   pointer-events: none;
+  justify-content: space-around;
 }
 
 .digital-rain-column {
@@ -110,6 +111,8 @@ body {
   user-select: none;
   font-size: 14px;
   animation: fall linear infinite;
+  animation-duration: var(--fall-duration);
+  animation-delay: var(--fall-delay);
   color: hsl(var(--primary));
   text-shadow:
     0 0 5px hsl(var(--primary) / 0.8),
