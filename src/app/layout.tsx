@@ -1,9 +1,11 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Toaster } from "@/components/ui/toaster"
+import { GoToTop } from '@/components/go-to-top';
 
 export const metadata: Metadata = {
   title: 'DevOps Virtuoso',
@@ -47,6 +49,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <Toaster />
+          <GoToTop />
         </ThemeProvider>
       </body>
     </html>
