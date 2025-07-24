@@ -1,4 +1,4 @@
-import { PersonalizedGreeting } from "@/components/personalized-greeting";
+
 import { PipelineVisualization } from "@/components/pipeline-visualization";
 import { InteractiveTerminal } from "@/components/interactive-terminal";
 import { SkillShowcase } from "@/components/skill-showcase";
@@ -25,9 +25,6 @@ export default function Home() {
           <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-foreground/80">
             Automating Complexity, Deploying Excellence.
           </p>
-          <div className="mt-8">
-            <PersonalizedGreeting />
-          </div>
           <div className="mt-12 max-w-4xl mx-auto">
             <h2 className="text-2xl font-bold font-headline mb-4">Live CI/CD Pipeline</h2>
             <PipelineVisualization />
