@@ -29,11 +29,11 @@ export default function JourneyPage() {
             <div key={index} className="relative">
                 <div className="md:grid md:grid-cols-2 md:gap-x-8 items-start">
                      {/* Commit Node */}
-                    <div className="absolute left-4 md:left-1/2 top-7 -translate-y-1/2 -translate-x-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-background border-2 border-primary">
+                    <div className="absolute left-4 md:left-1/2 top-7 -translate-y-1/2 -translate-x-1/2 z-10 flex h-4 w-4 items-center justify-center rounded-full bg-primary ring-4 ring-background">
                     </div>
 
                     {/* Horizontal Connector Line - Hidden on mobile */}
-                    <div className="hidden md:block absolute top-7 -translate-y-1/2 h-0.5 w-[calc(50%-1rem)] bg-primary/20" style={index % 2 === 0 ? { right: 'calc(50% + 1rem)' } : { left: 'calc(50% + 1rem)' }}></div>
+                    <div className="hidden md:block absolute top-7 -translate-y-1/2 h-0.5 w-[calc(50%-0.5rem)] bg-primary/30" style={index % 2 === 0 ? { right: 'calc(50% + 0.5rem)' } : { left: 'calc(50% + 0.5rem)' }}></div>
 
                     {/* Card Content */}
                     <div className={cn(
