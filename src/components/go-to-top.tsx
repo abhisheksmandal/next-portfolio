@@ -38,7 +38,7 @@ export function GoToTop() {
       size="icon"
       onClick={scrollToTop}
       className={cn(
-        "fixed bottom-8 right-8 z-50 transition-opacity duration-300",
+        "fixed bottom-8 right-8 z-50 rounded-full transition-opacity duration-300",
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       )}
       aria-label="Go to top"
