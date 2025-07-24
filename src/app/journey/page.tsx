@@ -2,7 +2,6 @@
 import { journey } from "@/lib/journey";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { GitCommit, GitBranch } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
@@ -31,7 +30,6 @@ export default function JourneyPage() {
                 <div className="md:grid md:grid-cols-2 md:gap-x-8 items-start">
                      {/* Commit Node */}
                     <div className="absolute left-4 md:left-1/2 top-7 -translate-y-1/2 -translate-x-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-background border-2 border-primary">
-                        {event.type === 'certification' ? <GitBranch className="w-4 h-4 text-primary" /> : <GitCommit className="w-4 h-4 text-primary" />}
                     </div>
 
                     {/* Horizontal Connector Line - Hidden on mobile */}
