@@ -15,7 +15,7 @@ export default function Home() {
   const latestPosts = posts.slice(0, 2);
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-20 md:space-y-32 overflow-x-hidden">
+    <div className="flex flex-col items-center space-y-20 md:space-y-32 overflow-x-hidden">
       {/* Hero Section */}
       <section id="hero" className="w-full text-center pt-20 md:pt-32">
         <div className="container mx-auto px-4">
@@ -35,7 +35,7 @@ export default function Home() {
       <Separator className="my-8" />
 
       {/* About Section */}
-      <section id="about" className="container mx-auto px-4">
+      <section id="about" className="container mx-auto px-4 w-full">
         <div className="grid md:grid-cols-3 gap-12 items-center">
             <div className="md:col-span-1">
                 <Image src="https://placehold.co/400x400.png" alt="Profile picture" width={400} height={400} className="rounded-full mx-auto shadow-lg border-4 border-primary/20" data-ai-hint="man portrait" />
@@ -52,7 +52,7 @@ export default function Home() {
       <Separator className="my-8" />
 
       {/* Skills Section */}
-      <section id="skills" className="container mx-auto px-4 text-center">
+      <section id="skills" className="container mx-auto px-4 text-center w-full">
         <h2 className="text-3xl md:text-4xl font-bold font-headline mb-12">Core Technologies</h2>
         <SkillShowcase />
       </section>
@@ -60,7 +60,7 @@ export default function Home() {
       <Separator className="my-8" />
 
       {/* Projects Section */}
-      <section id="projects" className="container mx-auto px-4">
+      <section id="projects" className="container mx-auto px-4 w-full">
         <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">Featured Projects</h2>
         <div className="grid md:grid-cols-2 gap-8">
           <Card className="light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/20 hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1">
@@ -105,7 +105,7 @@ export default function Home() {
       <Separator className="my-8" />
       
       {/* Blog Preview Section */}
-      <section id="blog-preview" className="container mx-auto px-4">
+      <section id="blog" className="container mx-auto px-4 w-full">
         <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">Latest Articles</h2>
         <div className="grid md:grid-cols-2 gap-8">
           {latestPosts.map((post) => (
@@ -139,7 +139,7 @@ export default function Home() {
       <Separator className="my-8" />
       
       {/* Contact Section */}
-      <section id="contact" className="container mx-auto px-4 pb-20 md:pb-32">
+      <section id="contact" className="container mx-auto px-4 w-full pb-20 md:pb-32">
         <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">Get In Touch</h2>
         <div className="max-w-xl mx-auto">
           <Card className="light:bg-white/40 dark:bg-card/60 light:backdrop-blur-lg p-4 md:p-8">

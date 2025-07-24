@@ -5,15 +5,46 @@ import { ThemeToggle } from "./theme-toggle"
 import { Button } from "./ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
 import { Menu } from "lucide-react"
+import { useEffect, useState } from "react"
+import { cn } from "@/lib/utils"
 
 export function Header() {
+  const [activeSection, setActiveSection] = useState("")
+
   const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#projects", label: "Projects" },
-    { href: "/blog", label: "Blog" },
-    { href: "#contact", label: "Contact" },
+    { id: "about", href: "#about", label: "About" },
+    { id: "skills", href: "#skills", label: "Skills" },
+    { id: "projects", href: "#projects", label: "Projects" },
+    { id: "blog", href: "/blog", label: "Blog" },
+    { id: "contact", href: "#contact", label: "Contact" },
   ]
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navLinks.map(link => document.getElementById(link.id)).filter(el => el);
+      const scrollPosition = window.scrollY + 150; // Add offset
+
+      let currentSection = "";
+      sections.forEach(section => {
+        if (section && section.offsetTop <= scrollPosition && section.offsetTop + section.offsetHeight > scrollPosition) {
+          currentSection = section.id;
+        }
+      });
+      
+      const blogLink = navLinks.find(l => l.id === 'blog');
+      if (blogLink && window.location.pathname.startsWith(blogLink.href)) {
+        setActiveSection('blog');
+      } else {
+        setActiveSection(currentSection);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Set initial active section
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [navLinks]);
+
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
@@ -26,7 +57,10 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              className={cn(
+                "text-sm font-medium transition-colors",
+                activeSection === link.id ? "text-primary font-bold" : "text-foreground/80 hover:text-primary"
+              )}
             >
               {link.label}
             </Link>
@@ -47,7 +81,10 @@ export function Header() {
                     <Link
                         key={link.href}
                         href={link.href}
-                        className="text-lg font-medium text-foreground hover:text-primary transition-colors"
+                        className={cn(
+                            "text-lg font-medium transition-colors",
+                             activeSection === link.id ? "text-primary font-bold" : "text-foreground hover:text-primary"
+                        )}
                     >
                         {link.label}
                     </Link>
