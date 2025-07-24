@@ -1,6 +1,6 @@
 "use client"
 import { GitIcon, DockerIcon, KubernetesIcon } from './icons';
-import { CheckCircle2, Zap, TestTube2, PackageCheck, Server } from 'lucide-react';
+import { CheckCircle2, Zap, TestTube2, PackageCheck, Server, Cloud } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
 import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
@@ -9,7 +9,7 @@ const stages = [
   { name: 'Build', icon: Zap, techIcon: GitIcon, color: 'text-blue-400' },
   { name: 'Test', icon: TestTube2, techIcon: DockerIcon, color: 'text-yellow-400' },
   { name: 'Deploy', icon: PackageCheck, techIcon: KubernetesIcon, color: 'text-green-400' },
-  { name: 'Live', icon: Server, techIcon: null, color: 'text-purple-400' },
+  { name: 'Live', icon: Server, techIcon: Cloud, color: 'text-purple-400' },
 ];
 
 export function PipelineVisualization() {
