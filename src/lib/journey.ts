@@ -7,7 +7,6 @@ export type JourneyEvent = {
   description: string;
   type: 'education' | 'work' | 'certification';
   icon: React.ElementType;
-  branch?: 'left' | 'right';
 };
 
 export const journey: JourneyEvent[] = [
@@ -26,7 +25,6 @@ export const journey: JourneyEvent[] = [
         description: "Validated technical expertise in developing and maintaining applications on the AWS platform.",
         type: 'certification',
         icon: Award,
-        branch: 'left'
     },
     {
         date: "2018 - 2020",
@@ -43,7 +41,6 @@ export const journey: JourneyEvent[] = [
         description: "Demonstrated the skills, knowledge and competencies to perform the responsibilities of Kubernetes administrators.",
         type: 'certification',
         icon: Award,
-        branch: 'right'
     },
     {
         date: "2020 - 2022",
@@ -68,6 +65,5 @@ export const journey: JourneyEvent[] = [
         description: "Certified practitioner with the foundational skills to provision cloud infrastructure using Terraform.",
         type: 'certification',
         icon: Award,
-        branch: 'left'
     },
 ];
