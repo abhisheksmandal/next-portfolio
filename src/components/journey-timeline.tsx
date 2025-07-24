@@ -27,19 +27,21 @@ export function JourneyTimeline({ limit }: JourneyTimelineProps) {
               {/* Horizontal Connector Line - Hidden on mobile */}
               <div
                 className={cn(
-                  "hidden md:block absolute top-7 -translate-y-1/2 h-0.5 w-[calc(50%-0.5rem)] bg-primary/30",
-                  index % 2 === 0 ? "right-[calc(50%+0.5rem)]" : "left-[calc(50%+0.5rem)]"
+                  "hidden md:block absolute top-7 -translate-y-1/2 h-0.5 bg-primary/30",
+                  index % 2 === 0 
+                    ? "right-1/2 w-[calc(50%_-_1rem)]" 
+                    : "left-1/2 w-[calc(50%_-_1rem)]"
                 )}
               ></div>
 
               {/* Card Content */}
               <div className={cn(
-                "ml-12 md:ml-0 md:flex",
-                index % 2 === 0 ? 'md:col-start-1 md:justify-end' : 'md:col-start-2 md:justify-start'
+                "ml-12 md:ml-0",
+                index % 2 === 0 ? "md:col-start-1" : "md:col-start-2"
               )}>
-                <div className="md:w-[calc(100%)] pt-0">
-                  <Card className="light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 transform hover:-translate-y-1">
-                    <CardHeader className={cn(index % 2 === 0 ? "md:text-right" : "md:text-left")}>
+                <div className={cn("pt-0", index % 2 === 0 ? "md:text-right" : "md:text-left")}>
+                  <Card className="light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 transform hover:-translate-y-1 inline-block w-full">
+                    <CardHeader>
                       <div className={cn(
                         "flex flex-col",
                         index % 2 === 0 ? 'md:items-end' : 'md:items-start'
@@ -54,7 +56,7 @@ export function JourneyTimeline({ limit }: JourneyTimelineProps) {
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className={cn(index % 2 === 0 ? "md:text-right" : "md:text-left")}>
+                    <CardContent>
                       <CardDescription>{event.description}</CardDescription>
                     </CardContent>
                   </Card>
