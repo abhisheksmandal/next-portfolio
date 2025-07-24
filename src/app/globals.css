@@ -83,7 +83,6 @@ body {
   
   .dark body {
     background: hsl(var(--background));
-    overflow: hidden;
   }
 }
 
