@@ -35,15 +35,15 @@ export function GoToTop() {
   return (
     <Button
       variant="outline"
-      size="icon"
+      size="lg"
       onClick={scrollToTop}
       className={cn(
-        "fixed bottom-8 right-8 z-50 rounded-full transition-opacity duration-300",
+        "fixed bottom-8 right-8 z-50 rounded-full transition-opacity duration-300 p-0 h-14 w-14",
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       )}
       aria-label="Go to top"
     >
-      <ArrowUp className="h-5 w-5" />
+      <ArrowUp className="h-7 w-7" />
     </Button>
   )
 }
