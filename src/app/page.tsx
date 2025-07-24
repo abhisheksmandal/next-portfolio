@@ -35,11 +35,18 @@ export default function Home() {
       <Separator className="my-8" />
 
       {/* About Section */}
-      <section id="about" className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline mb-6">About Me</h2>
-          <p className="text-lg text-foreground/80 leading-relaxed">
-            I&apos;m a passionate DevOps engineer dedicated to bridging the gap between development and operations. With a knack for automation, orchestration, and optimization, I build and maintain robust, scalable, and efficient infrastructures. My goal is to empower development teams to deliver high-quality software faster and more reliably.
-          </p>
+      <section id="about" className="container mx-auto px-4">
+        <div className="grid md:grid-cols-3 gap-12 items-center">
+            <div className="md:col-span-1">
+                <Image src="https://placehold.co/400x400.png" alt="Profile picture" width={400} height={400} className="rounded-full mx-auto shadow-lg border-4 border-primary/20" data-ai-hint="man portrait" />
+            </div>
+            <div className="md:col-span-2 text-center md:text-left">
+                <h2 className="text-3xl md:text-4xl font-bold font-headline mb-6">About Me</h2>
+                <p className="text-lg text-foreground/80 leading-relaxed">
+                    I&apos;m a passionate DevOps engineer dedicated to bridging the gap between development and operations. With a knack for automation, orchestration, and optimization, I build and maintain robust, scalable, and efficient infrastructures. My goal is to empower development teams to deliver high-quality software faster and more reliably.
+                </p>
+            </div>
+        </div>
       </section>
 
       <Separator className="my-8" />
@@ -126,7 +133,6 @@ export default function Home() {
 
       {/* Interactive Terminal Section */}
       <section id="terminal" className="container mx-auto px-4 w-full">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">Try the Interactive Terminal</h2>
         <InteractiveTerminal />
       </section>
 

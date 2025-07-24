@@ -17,7 +17,7 @@ export function PipelineVisualization() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveStage((prev) => (prev + 1) % (stages.length + 1));
+      setActiveStage((prev) => (prev === stages.length -1 ? -1 : prev + 1));
     }, 2000);
     return () => clearInterval(interval);
   }, []);
