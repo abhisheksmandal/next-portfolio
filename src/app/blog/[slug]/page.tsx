@@ -1,6 +1,7 @@
 import { posts } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import { Separator } from '@/components/ui/separator';
+import ReactMarkdown from 'react-markdown';
 
 type Props = {
   params: { slug: string };
@@ -39,8 +40,9 @@ export default function PostPage({ params }: Props) {
       <Separator className="my-8" />
       <div
         className="prose dark:prose-invert prose-lg max-w-none prose-pre:bg-secondary prose-pre:font-code prose-pre:p-4 prose-pre:rounded-lg"
-        dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br />') }}
-      />
+      >
+        <ReactMarkdown>{post.content}</ReactMarkdown>
+      </div>
     </article>
   );
 }

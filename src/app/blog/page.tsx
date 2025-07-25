@@ -20,10 +20,10 @@ export default function BlogPage() {
       <Separator className="mb-12" />
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post) => (
-          <Link href={`/blog/${post.slug}`} key={post.slug} className="block">
-            <Card className="h-full light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/10 hover:border-primary/40 transition-all duration-300 transform hover:-translate-y-2">
+          <Link href={`/blog/${post.slug}`} key={post.slug} className="block group">
+            <Card className="h-full light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/10 group-hover:border-primary/40 transition-all duration-300 transform group-hover:-translate-y-2">
               <CardHeader>
-                <CardTitle className="font-headline">{post.title}</CardTitle>
+                <CardTitle className="font-headline group-hover:text-primary transition-colors">{post.title}</CardTitle>
                 <p className="text-sm text-muted-foreground pt-2">{post.date}</p>
               </CardHeader>
               <CardContent>
