@@ -18,8 +18,8 @@ export function Header() {
     { id: "about", href: "#about", label: "About" },
     { id: "skills", href: "#skills", label: "Skills" },
     { id: "projects", href: "#projects", label: "Projects" },
-    { id: "journey", href: "/journey", label: "Journey" },
-    { id: "blog", href: "/blog", label: "Blog" },
+    { id: "journey-preview", href: "#journey-preview", label: "Journey" },
+    { id: "blog", href: "#blog", label: "Blog" },
     { id: "contact", href: "#contact", label: "Contact" },
   ]
 
@@ -37,8 +37,8 @@ export function Header() {
       }
       
       const blogLink = navLinks.find(l => l.id === 'blog');
-      const journeyLink = navLinks.find(l => l.id === 'journey');
-      if (blogLink && window.location.pathname.startsWith(blogLink.href)) {
+      const journeyLink = navLinks.find(l => l.href === '/journey');
+      if (blogLink && window.location.pathname.startsWith('/blog')) {
         setActiveSection('blog');
       } else if (journeyLink && window.location.pathname.startsWith(journeyLink.href)) {
         setActiveSection('journey');
