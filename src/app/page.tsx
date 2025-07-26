@@ -1,6 +1,4 @@
 
-
-
 import { PipelineVisualization } from "@/components/pipeline-visualization";
 import { SkillShowcase } from "@/components/skill-showcase";
 import { ContactForm } from "@/components/contact-form";
@@ -18,7 +16,7 @@ import { JourneyTimeline } from "@/components/journey-timeline";
 
 export default function Home() {
   const latestPosts = posts.slice(0, 2);
-  const featuredProjects = allProjects.slice(0, 4);
+  const featuredProjects = allProjects.slice(0, 2);
 
   return (
     <div className="flex flex-col items-center space-y-20 md:space-y-32 overflow-x-hidden">
@@ -171,3 +169,4 @@ export default function Home() {
   );
 
     
+
