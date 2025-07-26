@@ -62,7 +62,7 @@ export function InteractiveTerminal() {
   };
 
   useEffect(() => {
-    endOfTerminalRef.current?.scrollIntoView({ behavior: 'smooth' });
+    endOfTerminalRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, [lines]);
   
   const terminalFontClass = theme === 'dark' ? 'font-code' : '';
