@@ -29,15 +29,15 @@ export function JourneyTimeline({ limit }: JourneyTimelineProps) {
                 className={cn(
                   "hidden md:block absolute top-7 -translate-y-1/2 h-0.5 bg-primary/30",
                   index % 2 === 0 
-                    ? "right-1/2 w-[calc(50%_-_4rem)]" 
-                    : "left-1/2 w-[calc(50%_-_4rem)]"
+                    ? "right-1/2 w-[calc(50%_-_2rem)]" 
+                    : "left-1/2 w-[calc(50%_-_2rem)]"
                 )}
               ></div>
 
               {/* Card Content */}
               <div className={cn(
                 "ml-12 md:ml-0",
-                index % 2 === 0 ? "md:col-start-1" : "md:col-start-2"
+                index % 2 === 0 ? "md:col-start-1 md:pr-8" : "md:col-start-2 md:pl-8"
               )}>
                 <div className={cn("pt-0", index % 2 === 0 ? "md:text-right" : "md:text-left")}>
                   <Card className="light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 transform hover:-translate-y-1 inline-block w-full">
