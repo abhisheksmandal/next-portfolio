@@ -4,6 +4,8 @@
 import {
   Dialog,
   DialogContent,
+  DialogHeader,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
@@ -24,6 +26,9 @@ export function TerminalDialog() {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[825px] h-[60vh] flex flex-col p-0">
+        <DialogHeader className="sr-only">
+          <DialogTitle>Interactive Terminal</DialogTitle>
+        </DialogHeader>
         <InteractiveTerminal />
       </DialogContent>
     </Dialog>
