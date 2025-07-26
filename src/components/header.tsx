@@ -123,7 +123,7 @@ export function Header() {
       {/* Mobile Menu */}
       <div className={cn(
         "md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-background/80 backdrop-blur-md",
-        isMobileMenuOpen ? "max-h-screen" : "max-h-0"
+        isMobileMenuOpen ? "max-h-screen border-t border-border/50" : "max-h-0"
       )}>
         <nav className="flex flex-col items-center space-y-4 py-4">
           {navLinks.map((link) => (
