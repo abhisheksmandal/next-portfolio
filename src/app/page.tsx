@@ -42,7 +42,7 @@ export default function Home() {
       <section id="about" className="container mx-auto px-4 w-full animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
         <div className="grid md:grid-cols-3 gap-12 items-center">
             <div className="md:col-span-1">
-                <Image src="https://placehold.co/400x400.png" alt="Profile picture" width={400} height={400} className="rounded-full mx-auto shadow-lg border-4 border-primary/20" data-ai-hint="man portrait" />
+                <Image src="https://placehold.co/400x400.png" alt="Profile picture" width={400} height={400} className="rounded-full mx-auto shadow-lg border-4 border-primary/20 animated-border-glow" data-ai-hint="man portrait" />
             </div>
             <div className="md:col-span-2 text-center md:text-left">
                 <h2 className="text-3xl md:text-4xl font-bold font-headline mb-6">About Me</h2>

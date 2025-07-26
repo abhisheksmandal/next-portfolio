@@ -175,3 +175,30 @@ body {
         transform: translateY(0);
     }
 }
+
+.dark .animated-border-glow {
+  animation: glitch-glow 2.5s infinite;
+}
+
+@keyframes glitch-glow {
+  0%, 100% {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 5px hsl(var(--primary) / 0.2), 0 0 10px hsl(var(--primary) / 0.2), inset 0 0 5px hsl(var(--primary) / 0.2);
+  }
+  30% {
+    border-color: hsl(var(--primary) / 0.8);
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.6), 0 0 25px hsl(var(--primary) / 0.6), inset 0 0 10px hsl(var(--primary) / 0.5);
+  }
+  32% {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 5px hsl(var(--primary) / 0.2), 0 0 10px hsl(var(--primary) / 0.2), inset 0 0 5px hsl(var(--primary) / 0.2);
+  }
+  35% {
+    border-color: hsl(var(--primary) / 1);
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.8), 0 0 35px hsl(var(--primary) / 0.8), inset 0 0 15px hsl(var(--primary) / 0.7);
+  }
+  40% {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 5px hsl(var(--primary) / 0.2), 0 0 10px hsl(var(--primary) / 0.2), inset 0 0 5px hsl(var(--primary) / 0.2);
+  }
+}
