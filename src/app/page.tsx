@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, ExternalLink, ArrowRight } from "lucide-react";
+import { Github, ExternalLink, ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { posts } from "@/lib/posts";
 import { projects as allProjects } from "@/lib/projects";
@@ -157,16 +157,43 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="container mx-auto px-4 w-full pb-20 md:pb-32 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
         <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">Get In Touch</h2>
-        <div className="max-w-xl mx-auto">
-          <Card className="light:bg-white/40 dark:bg-card/60 light:backdrop-blur-lg p-4 md:p-8">
-            <CardContent className="p-0">
-              <ContactForm />
-            </CardContent>
-          </Card>
-        </div>
+        <Card className="max-w-4xl mx-auto light:bg-white/40 dark:bg-card/60 light:backdrop-blur-lg p-4 md:p-8">
+          <CardContent className="p-0">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-16">
+              <div>
+                <h3 className="text-2xl font-bold font-headline mb-4">Contact Form</h3>
+                <p className="text-muted-foreground mb-6">
+                  Have a question or want to work together? Fill out the form and I&apos;ll get back to you as soon as possible.
+                </p>
+                <ContactForm />
+              </div>
+              <div className="flex flex-col justify-center">
+                 <h3 className="text-2xl font-bold font-headline mb-4">Contact Information</h3>
+                 <p className="text-muted-foreground mb-6">
+                   Alternatively, feel free to reach out via email or phone. I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team.
+                 </p>
+                <div className="space-y-4 text-lg">
+                    <a href="mailto:contact@devopsvirtuoso.com" className="flex items-center group">
+                      <Mail className="w-6 h-6 mr-4 text-primary transition-transform duration-300 group-hover:scale-110" />
+                      <span className="group-hover:text-primary transition-colors">contact@devopsvirtuoso.com</span>
+                    </a>
+                    <a href="tel:+1234567890" className="flex items-center group">
+                      <Phone className="w-6 h-6 mr-4 text-primary transition-transform duration-300 group-hover:scale-110" />
+                      <span className="group-hover:text-primary transition-colors">+1 (234) 567-890</span>
+                    </a>
+                    <div className="flex items-center group">
+                       <MapPin className="w-6 h-6 mr-4 text-primary transition-transform duration-300 group-hover:scale-110" />
+                       <span className="group-hover:text-primary transition-colors">San Francisco, CA</span>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </section>
     </div>
   );
 
     
+
 
