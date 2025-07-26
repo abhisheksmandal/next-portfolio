@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, ExternalLink, ArrowRight, Mail, Phone, MapPin } from "lucide-react";
+import { Github, ExternalLink, ArrowRight, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { posts } from "@/lib/posts";
 import { projects as allProjects } from "@/lib/projects";
@@ -168,23 +168,21 @@ export default function Home() {
                 <ContactForm />
               </div>
               <div className="flex flex-col justify-center">
-                 <h3 className="text-2xl font-bold font-headline mb-4">Contact Information</h3>
+                 <h3 className="text-2xl font-bold font-headline mb-4">Direct Contact</h3>
                  <p className="text-muted-foreground mb-6">
-                   Alternatively, feel free to reach out via email or phone. I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team.
+                   Prefer a more direct approach? Reach out via email or WhatsApp. I&apos;m always open to discussing new projects, creative ideas, or opportunities.
                  </p>
                 <div className="space-y-4 text-lg">
-                    <a href="mailto:contact@devopsvirtuoso.com" className="flex items-center group">
-                      <Mail className="w-6 h-6 mr-4 text-primary transition-transform duration-300 group-hover:scale-110" />
-                      <span className="group-hover:text-primary transition-colors">contact@devopsvirtuoso.com</span>
-                    </a>
-                    <a href="tel:+1234567890" className="flex items-center group">
-                      <Phone className="w-6 h-6 mr-4 text-primary transition-transform duration-300 group-hover:scale-110" />
-                      <span className="group-hover:text-primary transition-colors">+1 (234) 567-890</span>
-                    </a>
-                    <div className="flex items-center group">
-                       <MapPin className="w-6 h-6 mr-4 text-primary transition-transform duration-300 group-hover:scale-110" />
-                       <span className="group-hover:text-primary transition-colors">San Francisco, CA</span>
-                    </div>
+                    <Button asChild size="lg" className="w-full">
+                        <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+                            <MessageCircle className="mr-2" /> WhatsApp Me
+                        </a>
+                    </Button>
+                    <Button asChild variant="outline" size="lg" className="w-full">
+                        <a href="mailto:contact@devopsvirtuoso.com">
+                            <Mail className="mr-2" /> Mail Me
+                        </a>
+                    </Button>
                 </div>
               </div>
             </div>
@@ -195,5 +193,6 @@ export default function Home() {
   );
 
     
+
 
 
