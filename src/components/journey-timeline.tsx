@@ -15,7 +15,7 @@ export function JourneyTimeline({ limit }: JourneyTimelineProps) {
   return (
     <div className="relative">
       {/* The main branch line */}
-      <div className="absolute left-4 md:left-1/2 top-0 h-full w-0.5 bg-primary/20 -translate-x-1/2"></div>
+      <div className="absolute left-4 md:left-1/2 top-0 h-full w-1 bg-primary/20 -translate-x-1/2"></div>
 
       <div className="space-y-12">
         {eventsToShow.map((event, index) => (
@@ -29,8 +29,8 @@ export function JourneyTimeline({ limit }: JourneyTimelineProps) {
                 className={cn(
                   "hidden md:block absolute top-7 -translate-y-1/2 h-0.5 bg-primary/30",
                   index % 2 === 0 
-                    ? "right-1/2 w-[calc(50%_-_2rem)]" 
-                    : "left-1/2 w-[calc(50%_-_2rem)]"
+                    ? "right-1/2 w-1/2" 
+                    : "left-1/2 w-1/2"
                 )}
               ></div>
 
