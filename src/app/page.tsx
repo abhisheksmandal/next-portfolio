@@ -124,7 +124,7 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <Card key={index} className="light:bg-white/30 dark:bg-card/50 light:backdrop-blur-lg border-2 border-primary/20 hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
-              <Image src={project.image} alt={project.title} width={600} height={400} className="rounded-t-lg" data-ai-hint={project.imageHint} />
+              <Image src={project.image} alt={project.title} width={600} height={400} className="rounded-t-lg object-cover h-64 w-full" data-ai-hint={project.imageHint} />
               <CardHeader>
                 <CardTitle className="font-headline">{project.title}</CardTitle>
                 <CardDescription>{project.description}</CardDescription>
