@@ -13,6 +13,7 @@ import { projects as allProjects } from "@/lib/projects";
 import { Badge } from "@/components/ui/badge";
 import { ProjectDetailsModal } from "@/components/project-details-modal";
 import { JourneyTimeline } from "@/components/journey-timeline";
+import { InteractiveTerminal } from "@/components/interactive-terminal";
 
 export default function Home() {
   const latestPosts = posts.slice(0, 2);
@@ -31,8 +32,8 @@ export default function Home() {
             Automating Complexity, Deploying Excellence.
           </p>
           <div className="mt-12 max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold font-headline mb-4">Live CI/CD Pipeline</h2>
-            <PipelineVisualization />
+            <h2 className="text-2xl font-bold font-headline mb-4">Interactive Terminal</h2>
+            <InteractiveTerminal />
           </div>
         </div>
       </section>
@@ -157,7 +158,7 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="container mx-auto px-4 w-full pb-20 md:pb-32 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
         <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">Get In Touch</h2>
-        <Card className="max-w-4xl mx-auto light:bg-white/40 dark:bg-card/60 light:backdrop-blur-lg p-4 md:p-8">
+        <Card className="max-w-4xl mx-auto light:bg-white/40 dark:bg-card/60 light:backdrop-blur-lg p-4 md:p-8 border-2 border-primary/20 hover:border-primary/50 transition-all duration-300">
           <CardContent className="p-0">
             <div className="md:grid md:grid-cols-2 md:gap-8 relative">
                 <div className="md:pr-8">
