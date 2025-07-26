@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -16,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { submitContactForm } from "@/lib/actions";
+import { Send } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -99,7 +101,13 @@ export function ContactForm() {
           )}
         />
         <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-          {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+          {form.formState.isSubmitting ? (
+            "Sending..."
+          ) : (
+            <>
+              Send Message <Send className="ml-2" />
+            </>
+          )}
         </Button>
       </form>
     </Form>
