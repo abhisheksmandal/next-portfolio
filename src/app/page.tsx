@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, ExternalLink, ArrowRight, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Github, ExternalLink, ArrowRight, Mail, MessageCircle } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { posts } from "@/lib/posts";
 import { projects as allProjects } from "@/lib/projects";
@@ -147,7 +147,7 @@ export default function Home() {
         </div>
         <div className="text-center mt-8">
           <Button asChild>
-            <Link href="/blog">View All Posts</Link>
+            <Link href="/blog">View All Posts <ArrowRight className="ml-2" /></Link>
           </Button>
         </div>
       </section>
@@ -159,40 +159,40 @@ export default function Home() {
         <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">Get In Touch</h2>
         <Card className="max-w-4xl mx-auto light:bg-white/40 dark:bg-card/60 light:backdrop-blur-lg p-4 md:p-8">
           <CardContent className="p-0">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-16">
-              <div>
-                <h3 className="text-2xl font-bold font-headline mb-4">Contact Form</h3>
-                <p className="text-muted-foreground mb-6">
-                  Have a question or want to work together? Fill out the form and I&apos;ll get back to you as soon as possible.
-                </p>
-                <ContactForm />
-              </div>
-              <div className="flex flex-col justify-center">
-                 <h3 className="text-2xl font-bold font-headline mb-4">Direct Contact</h3>
-                 <p className="text-muted-foreground mb-6">
-                   Prefer a more direct approach? Reach out via email or WhatsApp. I&apos;m always open to discussing new projects, creative ideas, or opportunities.
-                 </p>
-                <div className="space-y-4 text-lg">
-                    <Button asChild size="lg" className="w-full">
-                        <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
-                            <MessageCircle className="mr-2" /> WhatsApp Me
-                        </a>
-                    </Button>
-                    <Button asChild variant="outline" size="lg" className="w-full">
-                        <a href="mailto:contact@devopsvirtuoso.com">
-                            <Mail className="mr-2" /> Mail Me
-                        </a>
-                    </Button>
+            <div className="md:grid md:grid-cols-2 md:gap-8 relative">
+                <div className="md:pr-8">
+                    <h3 className="text-2xl font-bold font-headline mb-4">Contact Form</h3>
+                    <p className="text-muted-foreground mb-6">
+                      Have a question or want to work together? Fill out the form and I&apos;ll get back to you as soon as possible.
+                    </p>
+                    <ContactForm />
                 </div>
-              </div>
+
+                <div className="hidden md:block absolute left-1/2 top-0 h-full w-px bg-border -translate-x-1/2"></div>
+                <Separator className="my-8 md:hidden" />
+
+                <div className="flex flex-col justify-center md:pl-8">
+                    <h3 className="text-2xl font-bold font-headline mb-4">Direct Contact</h3>
+                    <p className="text-muted-foreground mb-6">
+                    Prefer a more direct approach? Reach out via email or WhatsApp. I&apos;m always open to discussing new projects, creative ideas, or opportunities.
+                    </p>
+                    <div className="space-y-4 text-lg">
+                        <Button asChild size="lg" className="w-full">
+                            <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+                                <MessageCircle className="mr-2" /> WhatsApp Me
+                            </a>
+                        </Button>
+                        <Button asChild variant="outline" size="lg" className="w-full">
+                            <a href="mailto:contact@devopsvirtuoso.com">
+                                <Mail className="mr-2" /> Mail Me
+                            </a>
+                        </Button>
+                    </div>
+                </div>
             </div>
           </CardContent>
         </Card>
       </section>
     </div>
   );
-
-    
-
-
-
+}
