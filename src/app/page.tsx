@@ -31,12 +31,19 @@ export default function Home() {
           <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-foreground/80">
             Automating Complexity, Deploying Excellence.
           </p>
-          <div className="mt-12 max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold font-headline mb-4">Interactive Terminal</h2>
-            <InteractiveTerminal />
-          </div>
+           <div className="mt-12 max-w-4xl mx-auto">
+             <PipelineVisualization />
+           </div>
         </div>
       </section>
+
+      <Separator className="my-8" />
+       {/* Interactive Terminal Section */}
+      <section id="terminal" className="container mx-auto px-4 w-full animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+        <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">Interactive Terminal</h2>
+        <InteractiveTerminal />
+      </section>
+
 
       <Separator className="my-8" />
 

@@ -14,6 +14,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
   const navLinksRef = useRef([
+    { id: "hero", href: "#hero", label: "Home" },
     { id: "about", href: "#about", label: "About" },
     { id: "skills", href: "#skills", label: "Skills" },
     { id: "projects", href: "#projects", label: "Projects" },
