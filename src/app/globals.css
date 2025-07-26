@@ -176,7 +176,7 @@ body {
     }
 }
 
-.dark .animated-border-glow {
+.animated-border-glow {
   animation: glitch-glow 2.5s infinite;
 }
 
