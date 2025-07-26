@@ -51,9 +51,24 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [navLinks]);
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const sectionId = href.substring(1);
+      const section = document.getElementById(sectionId);
+      if (section) {
+        window.scrollTo({
+          top: section.offsetTop - 80, // Offset for fixed header
+          behavior: 'smooth',
+        });
+      }
+    }
     setIsMobileMenuOpen(false);
   };
+  
+  const getLinkHref = (link: { id: string, href: string }) => {
+    return link.href.startsWith('/') ? link.href : `/#${link.id}`;
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
@@ -65,7 +80,8 @@ export function Header() {
           {navLinks.map((link) => (
             <Link
               key={link.href}
-              href={link.href.startsWith('/') ? link.href : `/#${link.id}`}
+              href={getLinkHref(link)}
+              onClick={(e) => handleLinkClick(e, link.href)}
               className={cn(
                 "text-sm font-medium transition-colors",
                 activeSection === link.id ? "text-primary font-bold" : "text-foreground/80 hover:text-primary"
@@ -86,15 +102,15 @@ export function Header() {
       </div>
       {/* Mobile Menu */}
       <div className={cn(
-        "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
+        "md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-background/80 backdrop-blur-md",
         isMobileMenuOpen ? "max-h-screen" : "max-h-0"
       )}>
         <nav className="flex flex-col items-center space-y-4 py-4">
           {navLinks.map((link) => (
             <Link
               key={link.href}
-              href={link.href.startsWith('/') ? link.href : `/#${link.id}`}
-              onClick={handleLinkClick}
+              href={getLinkHref(link)}
+              onClick={(e) => handleLinkClick(e, link.href)}
               className={cn(
                   "text-lg font-medium transition-colors w-full text-center py-2",
                    activeSection === link.id ? "text-primary font-bold bg-primary/10" : "text-foreground hover:text-primary hover:bg-primary/5"
