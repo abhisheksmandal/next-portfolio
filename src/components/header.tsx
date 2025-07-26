@@ -25,6 +25,19 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
+      if (pathname.startsWith('/projects')) {
+        setActiveSection('projects');
+        return;
+      }
+      if (pathname.startsWith('/blog')) {
+        setActiveSection('blog');
+        return;
+      }
+      if (pathname.startsWith('/journey')) {
+        setActiveSection('journey-preview');
+        return;
+      }
+      
       const sections = navLinks.map(link => document.getElementById(link.id)).filter(el => el);
       const scrollPosition = window.scrollY + 150; // Add offset
 
@@ -35,29 +48,19 @@ export function Header() {
           break;
         }
       }
-      
-      const blogLink = navLinks.find(l => l.id === 'blog');
-      const journeyLink = navLinks.find(l => l.href === '/journey');
-      if (blogLink && window.location.pathname.startsWith('/blog')) {
-        setActiveSection('blog');
-      } else if (journeyLink && window.location.pathname.startsWith(journeyLink.href)) {
-        setActiveSection('journey');
-      } else {
-        setActiveSection(currentSection);
-      }
+      setActiveSection(currentSection);
     };
     
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Set initial active section
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [navLinks]);
+  }, [pathname, navLinks]);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
       e.preventDefault();
       // If we are not on the homepage, we need to navigate there first.
-      // The actual scrolling will be handled by a useEffect on the homepage or by the browser default for hash links.
       if (pathname !== '/') {
         window.location.href = `/${href}`;
         return;
@@ -77,9 +80,23 @@ export function Header() {
   const getLinkHref = (link: { id: string, href: string }) => {
     const isHomePage = pathname === '/';
     if(link.href.startsWith('#')) {
+        if (link.href === '#journey-preview' || link.href === '#blog' || link.href === '#projects') {
+            const page = link.href.replace('-preview', '').replace('#', '');
+            if (pathname.startsWith(`/${page}`)) {
+                return `/${page}`;
+            }
+        }
       return isHomePage ? link.href : `/${link.href}`;
     }
     return link.href;
+  }
+
+  const getIsActive = (link: { id: string, href: string }) => {
+    if (pathname.startsWith('/projects') && link.id === 'projects') return true;
+    if (pathname.startsWith('/blog') && link.id === 'blog') return true;
+    if (pathname.startsWith('/journey') && link.id === 'journey-preview') return true;
+    if (pathname === '/') return activeSection === link.id;
+    return false;
   }
 
   return (
@@ -96,7 +113,7 @@ export function Header() {
               onClick={(e) => handleLinkClick(e, link.href)}
               className={cn(
                 "text-sm font-medium transition-colors",
-                activeSection === link.id ? "text-primary font-bold" : "text-foreground/80 hover:text-primary"
+                getIsActive(link) ? "text-primary font-bold" : "text-foreground/80 hover:text-primary"
               )}
             >
               {link.label}
@@ -125,7 +142,7 @@ export function Header() {
               onClick={(e) => handleLinkClick(e, link.href)}
               className={cn(
                   "text-lg font-medium transition-colors w-full text-center py-2",
-                   activeSection === link.id ? "text-primary font-bold bg-primary/10" : "text-foreground hover:text-primary hover:bg-primary/5"
+                   getIsActive(link) ? "text-primary font-bold bg-primary/10" : "text-foreground hover:text-primary hover:bg-primary/5"
               )}
             >
               {link.label}
