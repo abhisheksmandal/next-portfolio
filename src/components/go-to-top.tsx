@@ -9,13 +9,21 @@ import { cn } from "@/lib/utils"
 export function GoToTop() {
   const [isVisible, setIsVisible] = useState(false)
 
-  const toggleVisibility = () => {
-    if (window.scrollY > 300) {
-      setIsVisible(true)
-    } else {
-      setIsVisible(false)
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true)
+      } else {
+        setIsVisible(false)
+      }
     }
-  }
+
+    window.addEventListener("scroll", toggleVisibility, { passive: true })
+
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility)
+    }
+  }, [])
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -23,14 +31,6 @@ export function GoToTop() {
       behavior: "smooth",
     })
   }
-
-  useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility)
-
-    return () => {
-      window.removeEventListener("scroll", toggleVisibility)
-    }
-  }, [])
 
   return (
     <Button

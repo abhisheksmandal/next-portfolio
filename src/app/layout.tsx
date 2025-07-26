@@ -6,6 +6,22 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Toaster } from "@/components/ui/toaster"
 import { GoToTop } from '@/components/go-to-top';
+import { Poppins, Source_Code_Pro } from 'next/font/google';
+import { cn } from '@/lib/utils';
+
+const poppins = Poppins({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+  weight: ['300', '400', '600', '700'],
+});
+
+const sourceCodePro = Source_Code_Pro({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-code',
+  weight: ['400', '600', '700'],
+});
 
 export const metadata: Metadata = {
   title: 'DevOps Virtuoso',
@@ -18,12 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet" />
-      </head>
+    <html lang="en" suppressHydrationWarning className={cn(poppins.variable, sourceCodePro.variable)}>
       <body>
         <ThemeProvider
           attribute="class"

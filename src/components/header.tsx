@@ -5,7 +5,7 @@ import Link from "next/link"
 import { ThemeToggle } from "./theme-toggle"
 import { Button } from "./ui/button"
 import { Menu, X } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { usePathname } from 'next/navigation'
 import { cn } from "@/lib/utils"
 
@@ -13,46 +13,44 @@ export function Header() {
   const [activeSection, setActiveSection] = useState("")
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
-
-  const navLinks = [
+  const navLinksRef = useRef([
     { id: "about", href: "#about", label: "About" },
     { id: "skills", href: "#skills", label: "Skills" },
     { id: "projects", href: "#projects", label: "Projects" },
     { id: "journey-preview", href: "#journey-preview", label: "Journey" },
     { id: "blog", href: "#blog", label: "Blog" },
     { id: "contact", href: "#contact", label: "Contact" },
-  ]
+  ]);
+  const navLinks = navLinksRef.current;
+
 
   useEffect(() => {
     const handleScroll = () => {
-      if (pathname.startsWith('/projects')) {
-        setActiveSection('projects');
-        return;
-      }
-      if (pathname.startsWith('/blog')) {
-        setActiveSection('blog');
-        return;
-      }
-      if (pathname.startsWith('/journey')) {
-        setActiveSection('journey-preview');
-        return;
-      }
-      
-      const sections = navLinks.map(link => document.getElementById(link.id)).filter(el => el);
-      const scrollPosition = window.scrollY + 150; // Add offset
-
       let currentSection = "";
-      for (const section of sections) {
-        if (section && section.offsetTop <= scrollPosition && section.offsetTop + section.offsetHeight > scrollPosition) {
-          currentSection = section.id;
-          break;
+      if (pathname === '/') {
+        const sections = navLinks.map(link => document.getElementById(link.id)).filter(el => el);
+        const scrollPosition = window.scrollY + 150;
+
+        for (const section of sections) {
+          if (section && section.offsetTop <= scrollPosition && section.offsetTop + section.offsetHeight > scrollPosition) {
+            currentSection = section.id;
+            break;
+          }
+        }
+      } else {
+        if (pathname.startsWith('/projects')) {
+          currentSection = 'projects';
+        } else if (pathname.startsWith('/blog')) {
+          currentSection = 'blog';
+        } else if (pathname.startsWith('/journey')) {
+          currentSection = 'journey-preview';
         }
       }
       setActiveSection(currentSection);
     };
     
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Set initial active section
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); 
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname, navLinks]);
@@ -60,16 +58,18 @@ export function Header() {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
       e.preventDefault();
-      // If we are not on the homepage, we need to navigate there first.
+      
       if (pathname !== '/') {
         window.location.href = `/${href}`;
         return;
       }
+      
       const sectionId = href.substring(1);
       const section = document.getElementById(sectionId);
+      
       if (section) {
         window.scrollTo({
-          top: section.offsetTop - 80, // Offset for fixed header
+          top: section.offsetTop - 80,
           behavior: 'smooth',
         });
       }
@@ -78,25 +78,15 @@ export function Header() {
   };
   
   const getLinkHref = (link: { id: string, href: string }) => {
-    const isHomePage = pathname === '/';
     if(link.href.startsWith('#')) {
-        if (link.href === '#journey-preview' || link.href === '#blog' || link.href === '#projects') {
-            const page = link.href.replace('-preview', '').replace('#', '');
-            if (pathname.startsWith(`/${page}`)) {
-                return `/${page}`;
-            }
-        }
-      return isHomePage ? link.href : `/${link.href}`;
+      if(pathname === '/') return link.href;
+      return `/${link.href}`;
     }
     return link.href;
   }
 
   const getIsActive = (link: { id: string, href: string }) => {
-    if (pathname.startsWith('/projects') && link.id === 'projects') return true;
-    if (pathname.startsWith('/blog') && link.id === 'blog') return true;
-    if (pathname.startsWith('/journey') && link.id === 'journey-preview') return true;
-    if (pathname === '/') return activeSection === link.id;
-    return false;
+    return activeSection === link.id;
   }
 
   return (
@@ -108,7 +98,7 @@ export function Header() {
         <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
             <Link
-              key={link.href}
+              key={link.id}
               href={getLinkHref(link)}
               onClick={(e) => handleLinkClick(e, link.href)}
               className={cn(
@@ -137,7 +127,7 @@ export function Header() {
         <nav className="flex flex-col items-center space-y-4 py-4">
           {navLinks.map((link) => (
             <Link
-              key={link.href}
+              key={link.id}
               href={getLinkHref(link)}
               onClick={(e) => handleLinkClick(e, link.href)}
               className={cn(
