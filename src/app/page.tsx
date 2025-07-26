@@ -13,7 +13,6 @@ import { projects as allProjects } from "@/lib/projects";
 import { Badge } from "@/components/ui/badge";
 import { ProjectDetailsModal } from "@/components/project-details-modal";
 import { JourneyTimeline } from "@/components/journey-timeline";
-import { InteractiveTerminal } from "@/components/interactive-terminal";
 
 export default function Home() {
   const latestPosts = posts.slice(0, 2);
@@ -36,14 +35,6 @@ export default function Home() {
            </div>
         </div>
       </section>
-
-      <Separator className="my-8" />
-       {/* Interactive Terminal Section */}
-      <section id="terminal" className="container mx-auto px-4 w-full animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-        <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">Interactive Terminal</h2>
-        <InteractiveTerminal />
-      </section>
-
 
       <Separator className="my-8" />
 

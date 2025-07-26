@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Terminal } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { cn } from '@/lib/utils';
 
 const commands: { [key: string]: string | (() => string[]) } = {
   help: () => [
@@ -35,6 +36,7 @@ export function InteractiveTerminal() {
   ]);
   const [input, setInput] = useState('');
   const endOfTerminalRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -64,16 +66,27 @@ export function InteractiveTerminal() {
   useEffect(() => {
     endOfTerminalRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, [lines]);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
   
   const terminalFontClass = theme === 'dark' ? 'font-code' : '';
 
   return (
-    <Card className={`w-full max-w-4xl mx-auto ${terminalFontClass} bg-card/80 dark:bg-black/80 backdrop-blur-sm border-2 border-primary/20`}>
-      <div className="bg-primary/10 dark:bg-black/50 p-2 rounded-t-lg flex items-center">
+    <Card 
+        className={cn(
+            `w-full h-full flex flex-col ${terminalFontClass} bg-card/80 dark:bg-black/80 backdrop-blur-sm border-2 border-primary/20`,
+        )}
+        onClick={() => inputRef.current?.focus()}
+    >
+      <div className="bg-primary/10 dark:bg-black/50 p-2 rounded-t-lg flex items-center flex-shrink-0">
         <Terminal className="w-5 h-5 mr-2" />
         <span className="font-semibold">/bin/bash</span>
       </div>
-      <CardContent className="p-4 h-80 overflow-y-auto bg-transparent">
+      <CardContent className="p-4 flex-grow overflow-y-auto bg-transparent">
         {lines.map((line, index) => (
           <div key={index}>
             {line.type === 'input' ? (
@@ -89,6 +102,7 @@ export function InteractiveTerminal() {
         <form onSubmit={handleInputSubmit} className="flex items-center mt-2">
           <span className="text-primary mr-2">$</span>
           <input
+            ref={inputRef}
             type="text"
             value={input}
             onChange={handleInputChange}

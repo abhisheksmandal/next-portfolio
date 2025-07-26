@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { GoToTop } from '@/components/go-to-top';
 import { Poppins, Source_Code_Pro } from 'next/font/google';
 import { cn } from '@/lib/utils';
+import { TerminalDialog } from '@/components/terminal-dialog';
 
 const poppins = Poppins({ 
   subsets: ['latin'],
@@ -61,6 +62,7 @@ export default function RootLayout({
           </div>
           <Toaster />
           <GoToTop />
+          <TerminalDialog />
         </ThemeProvider>
       </body>
     </html>
