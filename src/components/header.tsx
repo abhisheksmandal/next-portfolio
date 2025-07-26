@@ -6,11 +6,13 @@ import { ThemeToggle } from "./theme-toggle"
 import { Button } from "./ui/button"
 import { Menu, X } from "lucide-react"
 import { useEffect, useState } from "react"
+import { usePathname } from 'next/navigation'
 import { cn } from "@/lib/utils"
 
 export function Header() {
   const [activeSection, setActiveSection] = useState("")
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const navLinks = [
     { id: "about", href: "#about", label: "About" },
@@ -54,6 +56,12 @@ export function Header() {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
       e.preventDefault();
+      // If we are not on the homepage, we need to navigate there first.
+      // The actual scrolling will be handled by a useEffect on the homepage or by the browser default for hash links.
+      if (pathname !== '/') {
+        window.location.href = `/${href}`;
+        return;
+      }
       const sectionId = href.substring(1);
       const section = document.getElementById(sectionId);
       if (section) {
@@ -67,7 +75,11 @@ export function Header() {
   };
   
   const getLinkHref = (link: { id: string, href: string }) => {
-    return link.href.startsWith('/') ? link.href : `/#${link.id}`;
+    const isHomePage = pathname === '/';
+    if(link.href.startsWith('#')) {
+      return isHomePage ? link.href : `/${link.href}`;
+    }
+    return link.href;
   }
 
   return (
