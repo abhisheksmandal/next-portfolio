@@ -1,3 +1,6 @@
+
+import postsData from '@/data/posts.json';
+
 export type Post = {
     slug: string;
     title: string;
@@ -6,53 +9,5 @@ export type Post = {
     content: string;
   };
   
-  export const posts: Post[] = [
-    {
-      slug: "demystifying-kubernetes",
-      title: "Demystifying Kubernetes: A Beginner's Guide",
-      description: "An introduction to the core concepts of Kubernetes and why it's a game-changer for modern infrastructure.",
-      date: "August 15, 2023",
-      content: `
-  Kubernetes, often abbreviated as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery.
-  
-  ### Key Concepts
-  
-  *   **Pods:** The smallest deployable units of computing that you can create and manage in Kubernetes.
-  *   **Services:** An abstract way to expose an application running on a set of Pods as a network service.
-  *   **Deployments:** A declarative way to manage Pods and ReplicaSets.
-  *   **Namespaces:** A way to divide cluster resources between multiple users.
-  
-  Understanding these fundamentals is the first step to mastering DevOps with Kubernetes.
-      `,
-    },
-    {
-      slug: "iac-with-terraform",
-      title: "Infrastructure as Code with Terraform",
-      description: "Explore how to manage your infrastructure with configuration files using Terraform.",
-      date: "September 02, 2023",
-      content: `
-  Infrastructure as Code (IaC) is the management of infrastructure (networks, virtual machines, load balancers, and connection topology) in a descriptive model, using the same versioning as DevOps team uses for source code.
-  
-  Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.
-  
-  A key benefit of Terraform is that it allows you to define your infrastructure in a declarative way. This means you describe the desired state of your system, and Terraform takes care of figuring out how to achieve that state.
-      `,
-    },
-    {
-      slug: "building-ci-cd-pipelines",
-      title: "The Anatomy of a Modern CI/CD Pipeline",
-      description: "A deep dive into the stages and best practices for building robust and efficient CI/CD pipelines.",
-      date: "October 20, 2023",
-      content: `
-  A CI/CD pipeline is a series of steps that must be performed in order to deliver a new version of software. A typical pipeline consists of the following stages:
-  
-  1.  **Build:** The stage where the application is compiled.
-  2.  **Test:** The stage where code is tested. Automation here is key.
-  3.  **Release:** The stage where the application is delivered to the repository.
-  4.  **Deploy:** The stage where the application is deployed to production.
-  
-  By automating these stages, teams can reduce human error and release software faster.
-      `,
-    },
-  ];
+  export const posts: Post[] = postsData;
   

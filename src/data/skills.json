@@ -1,0 +1,58 @@
+
+[
+  {
+    "name": "AWS",
+    "icon": "AWSIcon",
+    "description": "Cloud services for compute, storage, and databases."
+  },
+  {
+    "name": "GCP",
+    "icon": "GCPIcon",
+    "description": "Cloud computing services by Google Cloud."
+  },
+  {
+    "name": "Docker",
+    "icon": "DockerIcon",
+    "description": "Containerization platform for building and running applications."
+  },
+  {
+    "name": "Kubernetes",
+    "icon": "KubernetesIcon",
+    "description": "Container orchestration system for automating application deployment."
+  },
+  {
+    "name": "Terraform",
+    "icon": "TerraformIcon",
+    "description": "Infrastructure as Code software tool."
+  },
+  {
+    "name": "Ansible",
+    "icon": "AnsibleIcon",
+    "description": "Configuration management and application-deployment tool."
+  },
+  {
+    "name": "Jenkins",
+    "icon": "JenkinsIcon",
+    "description": "Automation server for building, testing, and deploying code."
+  },
+  {
+    "name": "Git",
+    "icon": "GitIcon",
+    "description": "Distributed version control system for tracking changes."
+  },
+  {
+    "name": "Python",
+    "icon": "PythonIcon",
+    "description": "High-level programming language for scripting and automation."
+  },
+  {
+    "name": "Prometheus",
+    "icon": "PrometheusIcon",
+    "description": "Open-source monitoring and alerting toolkit."
+  },
+  {
+    "name": "Grafana",
+    "icon": "GrafanaIcon",
+    "description": "Multi-platform open source analytics and interactive visualization web application."
+  }
+]
