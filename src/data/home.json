@@ -1,0 +1,37 @@
+{
+    "hero": {
+        "title": "DevOps Virtuoso",
+        "subtitle": "Automating Complexity, Deploying Excellence."
+    },
+    "about": {
+        "title": "About Me",
+        "imageUrl": "https://placehold.co/400x400.png",
+        "imageHint": "man portrait",
+        "description": "I'm a passionate DevOps engineer dedicated to bridging the gap between development and operations. With a knack for automation, orchestration, and optimization, I build and maintain robust, scalable, and efficient infrastructures. My goal is to empower development teams to deliver high-quality software faster and more reliably."
+    },
+    "skills": {
+        "title": "Core Technologies"
+    },
+    "journey": {
+        "title": "My Journey"
+    },
+    "projects": {
+        "title": "Featured Projects"
+    },
+    "blog": {
+        "title": "Latest Articles"
+    },
+    "contact": {
+        "title": "Get In Touch",
+        "form": {
+            "title": "Contact Form",
+            "description": "Have a question or want to work together? Fill out the form and I'll get back to you as soon as possible."
+        },
+        "direct": {
+            "title": "Direct Contact",
+            "description": "Prefer a more direct approach? Reach out via email or WhatsApp. I'm always open to discussing new projects, creative ideas, or opportunities.",
+            "whatsappUrl": "https://wa.me/1234567890",
+            "email": "mailto:contact@devopsvirtuoso.com"
+        }
+    }
+}

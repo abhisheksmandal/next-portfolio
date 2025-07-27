@@ -2,19 +2,20 @@ import { posts } from "@/lib/posts";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import blogData from "@/data/blog.json";
 
 export const metadata = {
-  title: "Blog | DevOps Virtuoso",
-  description: "Technical articles and research on DevOps, cloud computing, and automation.",
+  title: blogData.title,
+  description: blogData.description,
 };
 
 export default function BlogPage() {
   return (
     <div className="container mx-auto px-4 py-24 md:py-32">
       <header className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold font-headline">Technical Blog</h1>
+        <h1 className="text-4xl md:text-5xl font-bold font-headline">{blogData.pageHeader}</h1>
         <p className="mt-4 text-lg text-muted-foreground">
-          Insights on DevOps, cloud, and everything in between.
+          {blogData.pageSubheader}
         </p>
       </header>
       <Separator className="mb-12" />

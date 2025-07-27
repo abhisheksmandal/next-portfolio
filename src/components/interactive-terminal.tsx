@@ -25,7 +25,7 @@ const commands: { [key: string]: string | (() => string[]) } = {
     '  - IaC: Terraform, Ansible',
     '  - Scripting: Bash, Python, Go',
   ],
-  contact: 'You can reach me via the contact form below or at email@example.com.',
+  contact: 'You can reach me via the contact form below or at contact@devopsvirtuoso.com.',
   clear: () => [],
 };
 

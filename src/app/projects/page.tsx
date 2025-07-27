@@ -3,24 +3,24 @@ import { projects } from "@/lib/projects";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import Link from "next/link";
 import { Github, ExternalLink } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { ProjectDetailsModal } from "@/components/project-details-modal";
+import projectsData from "@/data/projects.json";
 
 export const metadata = {
-  title: "Projects | DevOps Virtuoso",
-  description: "A collection of my DevOps projects.",
+  title: projectsData.title,
+  description: projectsData.description,
 };
 
 export default function ProjectsPage() {
   return (
     <div className="container mx-auto px-4 py-24 md:py-32">
       <header className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold font-headline">All Projects</h1>
+        <h1 className="text-4xl md:text-5xl font-bold font-headline">{projectsData.pageHeader}</h1>
         <p className="mt-4 text-lg text-muted-foreground">
-          A showcase of my work in automation, cloud infrastructure, and CI/CD.
+          {projectsData.pageSubheader}
         </p>
       </header>
       <Separator className="mb-12" />

@@ -8,20 +8,13 @@ import { Menu, X } from "lucide-react"
 import { useEffect, useState, useRef } from "react"
 import { usePathname } from 'next/navigation'
 import { cn } from "@/lib/utils"
+import headerData from "@/data/header.json"
 
 export function Header() {
   const [activeSection, setActiveSection] = useState("")
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
-  const navLinksRef = useRef([
-    { id: "hero", href: "#hero", label: "Home" },
-    { id: "about", href: "#about", label: "About" },
-    { id: "skills", href: "#skills", label: "Skills" },
-    { id: "projects", href: "#projects", label: "Projects" },
-    { id: "journey-preview", href: "#journey-preview", label: "Journey" },
-    { id: "blog", href: "#blog", label: "Blog" },
-    { id: "contact", href: "#contact", label: "Contact" },
-  ]);
+  const navLinksRef = useRef(headerData.navLinks);
   const navLinks = navLinksRef.current;
 
 
@@ -94,7 +87,7 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="text-xl font-bold font-headline text-primary">
-          DevOps Virtuoso
+          {headerData.siteTitle}
         </Link>
         <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
@@ -122,7 +115,7 @@ export function Header() {
       </div>
       {/* Mobile Menu */}
       <div className={cn(
-        "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
+        "md:hidden overflow-hidden transition-all duration-300 ease-in-out bg-background/80 backdrop-blur-md",
         isMobileMenuOpen ? "max-h-screen border-t border-border/50" : "max-h-0"
       )}>
         <nav className="flex flex-col items-center space-y-4 py-4">
