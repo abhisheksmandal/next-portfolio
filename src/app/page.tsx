@@ -61,26 +61,11 @@ export default function Home() {
         <h2 className="text-3xl md:text-4xl font-bold font-headline mb-12">{homeData.skills.title}</h2>
         <SkillShowcase />
       </section>
-
-      <Separator className="my-8" />
-      
-      {/* Journey Preview Section */}
-      <section id="journey-preview" className="container mx-auto px-4 w-full animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-        <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">{homeData.journey.title}</h2>
-        <JourneyTimeline limit={3} />
-        <div className="text-center mt-12">
-          <Button asChild>
-            <Link href="/journey">
-              View Full Journey <ArrowRight className="ml-2" />
-            </Link>
-          </Button>
-        </div>
-      </section>
       
       <Separator className="my-8" />
 
       {/* Projects Section */}
-      <section id="projects" className="container mx-auto px-4 w-full animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+      <section id="projects" className="container mx-auto px-4 w-full animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
         <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">{homeData.projects.title}</h2>
         <div className="grid md:grid-cols-2 gap-8">
           {featuredProjects.map((project, index) => (
@@ -125,6 +110,21 @@ export default function Home() {
         </div>
       </section>
 
+      <Separator className="my-8" />
+
+      {/* Journey Preview Section */}
+      <section id="journey-preview" className="container mx-auto px-4 w-full animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+        <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">{homeData.journey.title}</h2>
+        <JourneyTimeline limit={3} />
+        <div className="text-center mt-12">
+          <Button asChild>
+            <Link href="/journey">
+              View Full Journey <ArrowRight className="ml-2" />
+            </Link>
+          </Button>
+        </div>
+      </section>
+      
       <Separator className="my-8" />
       
       {/* Blog Preview Section */}
