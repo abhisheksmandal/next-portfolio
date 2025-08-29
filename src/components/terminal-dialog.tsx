@@ -11,10 +11,13 @@ import {
 import { Button } from "@/components/ui/button"
 import { Terminal } from "lucide-react"
 import { InteractiveTerminal } from "./interactive-terminal"
+import { useState } from "react"
 
 export function TerminalDialog() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           variant="outline"
@@ -26,10 +29,10 @@ export function TerminalDialog() {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[825px] h-[60vh] flex flex-col p-0">
-        <DialogHeader className="sr-only">
-          <DialogTitle>Interactive Terminal</DialogTitle>
+        <DialogHeader>
+          <DialogTitle className="sr-only">Interactive Terminal</DialogTitle>
         </DialogHeader>
-        <InteractiveTerminal />
+        <InteractiveTerminal onExit={() => setOpen(false)} />
       </DialogContent>
     </Dialog>
   )

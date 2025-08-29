@@ -7,30 +7,37 @@ import { Terminal } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 
-const commands: { [key: string]: string | (() => string[]) } = {
-  help: () => [
-    'Available commands:',
-    '  help     - Show this help message',
-    '  about    - Display a short bio',
-    '  skills   - List my technical skills',
-    '  contact  - Show contact information',
-    '  clear    - Clear the terminal screen',
-  ],
-  about: 'I am a DevOps engineer passionate about automation and building scalable systems.',
-  skills: () => [
-    'My skills include:',
-    '  - Cloud: AWS, GCP',
-    '  - CI/CD: Jenkins, GitLab CI, GitHub Actions',
-    '  - Containers: Docker, Kubernetes',
-    '  - IaC: Terraform, Ansible',
-    '  - Scripting: Bash, Python, Go',
-  ],
-  contact: 'You can reach me via the contact form below or at contact@devopsvirtuoso.com.',
-  clear: () => [],
+type InteractiveTerminalProps = {
+  onExit: () => void;
 };
 
-export function InteractiveTerminal() {
+export function InteractiveTerminal({ onExit }: InteractiveTerminalProps) {
   const { theme } = useTheme();
+
+  const commands: { [key: string]: string | (() => string[]) } = {
+    help: () => [
+      'Available commands:',
+      '  help     - Show this help message',
+      '  about    - Display a short bio',
+      '  skills   - List my technical skills',
+      '  contact  - Show contact information',
+      '  clear    - Clear the terminal screen',
+      '  exit     - Close the terminal',
+    ],
+    about: 'I am a DevOps engineer passionate about automation and building scalable systems.',
+    skills: () => [
+      'My skills include:',
+      '  - Cloud: AWS, GCP',
+      '  - CI/CD: Jenkins, GitLab CI, GitHub Actions',
+      '  - Containers: Docker, Kubernetes',
+      '  - IaC: Terraform, Ansible',
+      '  - Scripting: Bash, Python, Go',
+    ],
+    contact: 'You can reach me via the contact form below or at contact@devopsvirtuoso.com.',
+    clear: () => [],
+    exit: 'Goodbye!',
+  };
+
   const [lines, setLines] = useState<{ type: 'input' | 'output'; text: string | string[] }[]>([
     { type: 'output', text: "Welcome to my interactive terminal! Type 'help' to see available commands." },
   ]);
@@ -49,6 +56,10 @@ export function InteractiveTerminal() {
 
     if (command === 'clear') {
         setLines([]);
+    } else if (command === 'exit') {
+        newLines.push({ type: 'output', text: commands.exit });
+        setLines(newLines);
+        setTimeout(onExit, 500); // Close after a short delay
     } else if (command in commands) {
       const output = commands[command];
       newLines.push({ type: 'output', text: typeof output === 'function' ? output() : output });
