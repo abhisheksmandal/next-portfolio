@@ -2,6 +2,7 @@ import { posts } from "@/lib/posts";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { BackButton } from '@/components/back-button'
 import blogData from "@/data/blog.json";
 
 export const metadata = {
@@ -13,6 +14,7 @@ export default function BlogPage() {
   return (
     <div className="container mx-auto px-4 py-24 md:py-32">
       <header className="text-center mb-12">
+        <BackButton />
         <h1 className="text-4xl md:text-5xl font-bold font-headline">{blogData.pageHeader}</h1>
         <p className="mt-4 text-lg text-muted-foreground">
           {blogData.pageSubheader}

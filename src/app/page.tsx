@@ -102,10 +102,10 @@ export default function Home() {
           ))}
         </div>
         <div className="text-center mt-12">
-            <Button asChild>
-                <Link href="/projects">
-                View All Projects <ArrowRight className="ml-2" />
-                </Link>
+            <Button variant="outline" asChild>
+              <Link href="/projects?from=home">
+              View All Projects <ArrowRight className="ml-2" />
+              </Link>
             </Button>
         </div>
       </section>
@@ -117,8 +117,8 @@ export default function Home() {
         <h2 className="text-3xl md:text-4xl font-bold font-headline text-center mb-12">{homeData.journey.title}</h2>
         <JourneyTimeline limit={3} />
         <div className="text-center mt-12">
-          <Button asChild>
-            <Link href="/journey">
+          <Button variant="outline" asChild>
+            <Link href="/journey?from=home">
               View Full Journey <ArrowRight className="ml-2" />
             </Link>
           </Button>
@@ -146,8 +146,8 @@ export default function Home() {
           ))}
         </div>
         <div className="text-center mt-8">
-          <Button asChild>
-            <Link href="/blog">View All Posts <ArrowRight className="ml-2" /></Link>
+          <Button variant="outline" asChild>
+            <Link href="/blog?from=home">View All Posts <ArrowRight className="ml-2" /></Link>
           </Button>
         </div>
       </section>

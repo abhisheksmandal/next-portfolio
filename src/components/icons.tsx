@@ -1,72 +1,65 @@
-// A place for custom SVG icons not available in lucide-react
+// Use icons from `simple-icons` for accurate branding where available.
+import {
+  siDocker,
+  siJenkins,
+  siKubernetes,
+  siTerraform,
+  siGit,
+  siAnsible,
+  siPrometheus,
+  siGrafana,
+  siPython,
+  siGooglecloud,
+} from 'simple-icons'
 
+import React from 'react'
+
+function SimpleIcon(icon: any) {
+  if (!icon) return (props: React.SVGProps<SVGSVGElement>) => null
+  return (props: React.SVGProps<SVGSVGElement>) => (
+    <svg
+      role="img"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <title>{icon.title}</title>
+      <path d={icon.path} fill={`#${icon.hex}`} />
+    </svg>
+  )
+}
+
+// simple-icons package doesn't expose an AWS/Amazon icon in this release,
+// fallback to a built-in AWS-like SVG for branding-like appearance.
 export const AWSIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M13.297 10.34a.738.738 0 00-.738-.738H9.31a.738.738 0 00-.738.738v3.319a.738.738 0 00.738.738h3.249a.738.738 0 00.738-.738v-1.07h-1.635v.654H9.726v-2.51h2.201v.655h1.37zm-2.883 5.643h1.86a.738.738 0 00.738-.738v-1.05h1.634v1.446a2.091 2.091 0 01-2.09 2.09h-2.14a2.09 2.09 0 01-2.09-2.09v-1.445h1.634v1.05a.738.738 0 00.454.683zm-6.23-8.832C1.603 7.151 0 9.29 0 12.013c0 3.32 2.68 5.422 5.518 5.422 2.22 0 3.865-1.127 4.29-2.766h-1.63a2.67 2.67 0 00-2.66 2.353c-1.635 0-2.768-1.01-2.768-2.968s1.172-2.97 2.77-2.97a2.67 2.67 0 002.658 2.353h1.632C9.382 9.018 7.737 7.93 5.518 7.93c-1.41 0-2.583.655-3.17 1.635h6.33v-1.37H4.184zm19.816 0v1.37h-4.329V7.151h-1.634v7.711h1.254l4.518-7.711h-1.635l-3.13 5.421-1.127-1.821V7.15h4.74z" />
-    </svg>
-  );
-  
-  export const DockerIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M21.246 8.91l-3.69-1.346a.375.375 0 00-.41.332v-.001H3.664a.375.375 0 00-.374.375v9.11a.375.375 0 00.375.375h14.735a.375.375 0 00.374-.375v-1.2h.001c.21 0 .375-.178.375-.375v-1.2h.001c.21 0 .375-.178.375-.375v-1.2c0-.21-.178-.375-.375-.375h-.001v-1.2c0-.21-.178-.375-.375-.375h-.001V9.24a.374.374 0 00.33-.33zM7.5 11.25H6v1.5h1.5zm3 0H9v1.5h1.5zm3 0h-1.5v1.5H15zm3 0h-1.5v1.5h1.5zM23.625 7.5a3.375 3.375 0 00-3.375-3.375H3.75A3.375 3.375 0 00.375 7.5v9.375A3.375 3.375 0 003.75 20.25h16.5a3.375 3.375 0 003.375-3.375V7.5z" />
-    </svg>
-  );
-  
-  export const JenkinsIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M12.01 4.708a.591.591 0 00-.974 0L6.41 12.01l4.625 7.303a.591.591 0 10.974 0l4.625-7.303-4.625-7.303zM12.01 0a2.953 2.953 0 00-2.953 2.953c0 .816.33 1.558.865 2.1l-5.63 8.91a2.953 2.953 0 00.974 4.177l5.63 2.698a2.953 2.953 0 104.225-4.177L14.1 7.052c.535-.542.865-1.284.865-2.1A2.953 2.953 0 0012.01 0z" />
-    </svg>
-  );
-  
-  export const KubernetesIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.06 6.06l3.54 3.54-3.54 3.54-1.41-1.41 2.12-2.13-2.12-2.12 1.41-1.42zM12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-    </svg>
-  );
-  
-  export const TerraformIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M1.02 1.95v7.26h6.05V1.95H1.02zm1.21 1.2h3.63v4.86H2.23V3.15zM8.28 1.95v7.26h6.05V1.95H8.28zm1.2 1.2h3.64v4.86h-3.64V3.15zM15.54 1.95v7.26h6.05V1.95h-6.05zm1.21 1.2h3.63v4.86h-3.63V3.15zM1.02 10.41v7.26h6.05v-7.26H1.02zm1.21 1.2h3.63v4.86H2.23v-4.86zM8.28 10.41v10.9h6.05v-10.9H8.28zm1.2 1.2h3.64v8.5h-3.64v-8.5z" />
-    </svg>
-  );
-  
-  export const GitIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-        <circle cx="18" cy="18" r="3"></circle>
-        <circle cx="6" cy="6" r="3"></circle>
-        <path d="M18 21V9"></path>
-        <path d="M6 9v12"></path>
-    </svg>
-);
-
-export const AnsibleIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.12 13.9L7.22 13l3.66-2.9c.4-.32.4-1.02 0-1.34L7.22 6.1c-.5-.4-1.22.12-1 .78l.88 2.82H4c-.55 0-1 .45-1 1v.6c0 .55.45 1 1 1h3.1l-.88 2.82c-.22.66.5 1.18 1 .78zM17.78 13l-3.66-2.9c-.4-.32-.4-1.02 0-1.34L17.78 6.1c.5-.4 1.22.12 1 .78l-.88 2.82H20c.55 0 1 .45 1 1v.6c0 .55-.45 1-1 1h-1.1l.88 2.82c.22.66-.5 1.18-1 .78l-3.66-2.9z"/>
-    </svg>
-);
-
-export const PrometheusIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-    </svg>
-);
-
-export const GrafanaIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-    </svg>
-);
-
-export const PythonIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M15 11.5c0-.83.67-1.5 1.5-1.5h2.5V7H15c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-3.5h-2.5c-.83 0-1.5-.67-1.5-1.5zM9 12.5c0 .83-.67 1.5-1.5 1.5H5V17H9c2.76 0 5-2.24 5-5s-2.24-5-5-5H5v3.5h2.5c.83 0 1.5.67 1.5 1.5z"/>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    role="img"
+    {...props}
+  >
+    <title>AWS</title>
+    <text
+      x="12"
+      y="16"
+      textAnchor="middle"
+      fontFamily="Inter, Arial, Helvetica, sans-serif"
+      fontWeight="700"
+      fontSize="8.5"
+      fill="#FF9900"
+    >
+      AWS
+    </text>
   </svg>
-);
-
-export const GCPIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M5.4,12.7c0.2,0.1,0.3,0.1,0.5,0.2c0,0,0,0,0,0c0.3,0.1,0.5,0.2,0.8,0.4c0,0,0,0,0,0c0.3,0.1,0.5,0.3,0.7,0.5 c0.3,0.2,0.5,0.5,0.7,0.8c0.1,0.2,0.2,0.3,0.2,0.5L5.4,12.7z"/>
-    <path d="M12,5.2c-1.3,0-2.5,0.4-3.5,1.1C7.8,6.8,7.1,7.3,6.5,8C6,8.5,5.6,9.1,5.2,9.8C5,10.2,4.8,10.7,4.7,11.2c0,0,0,0.1,0,0.1 c-0.1,0.5-0.1,1,0,1.5c0,0.2,0,0.3,0.1,0.5c0,0,0,0,0,0c0.1,0.5,0.2,1,0.4,1.4c0,0,0,0,0,0c0.2,0.5,0.5,1,0.9,1.4c0,0,0,0,0,0 c0.4,0.4,0.8,0.7,1.2,1c0,0,0,0,0,0c0.5,0.2,1,0.4,1.5,0.5c1,0.3,2,0.3,3,0c0.5-0.1,1-0.3,1.5-0.5c0.5-0.3,1-0.6,1.4-1 c0.4-0.4,0.7-0.9,1-1.4c0.3-0.5,0.5-1,0.6-1.5c0.1-0.3,0.2-0.5,0.2-0.8c0-0.2,0.1-0.4,0.1-0.6c0-0.5,0-1-0.1-1.5 c-0.1-0.5-0.2-1-0.4-1.4c-0.2-0.5-0.5-1-0.9-1.4c-0.4-0.4-0.8-0.7-1.2-1C14,5.6,13,5.2,12,5.2z M12,17.2c-2.9,0-5.2-2.3-5.2-5.2 c0-2.9,2.3-5.2,5.2-5.2c2.9,0,5.2,2.3,5.2,5.2C17.2,14.9,14.9,17.2,12,17.2z"/>
-    <path d="M19.7,5.8c-0.1-0.1-0.2-0.2-0.3-0.3c-0.2-0.2-0.4-0.4-0.6-0.6c-0.5-0.5-1.1-0.9-1.7-1.2c-0.3-0.2-0.7-0.4-1-0.5 c0,0,0,0,0,0c-0.2-0.1-0.3-0.1-0.5-0.2H12h-2.9c0,0,0,0,0,0c-1.1,0.4-2.2,1-3.1,1.9c-0.3,0.3-0.6,0.6-0.9,0.9 C4.8,7.3,4.5,7.7,4.2,8c0,0,0,0,0,0c-0.3,0.3-0.5,0.6-0.7,1c-0.2,0.3-0.4,0.6-0.5,1c0,0.1,0,0.1,0,0.2c-0.1,0.2-0.2,0.5-0.2,0.7 c0,0.2-0.1,0.5-0.1,0.7v2.9c0.1,0,0.1,0,0.1,0c0,1.1,0.3,2.2,0.9,3.1c0.3,0.5,0.6,0.9,1,1.3c0.4,0.4,0.8,0.8,1.3,1.1 c0.5,0.3,1,0.6,1.5,0.8c0.5,0.2,1,0.3,1.5,0.4c0.5,0.1,1.1,0.1,1.6,0c0.5,0,1.1-0.1,1.6-0.3c0.5-0.2,1-0.4,1.5-0.7 c0.5-0.3,0.9-0.6,1.3-1c0.4-0.4,0.8-0.8,1.1-1.3c0.3-0.5,0.6-1,0.8-1.5c0.2-0.5,0.3-1.1,0.4-1.6c0-0.5,0.1-1.1,0-1.6 c0-0.5-0.1-1.1-0.3-1.6C20.6,7.5,20.2,6.6,19.7,5.8z M18.5,14.2c-0.1,0.2-0.2,0.3-0.2,0.5c-0.2,0.3-0.5,0.5-0.7,0.8 c-0.2,0.2-0.5,0.4-0.7,0.5c-0.1,0.1-0.3,0.2-0.5,0.3c0,0,0,0,0,0c-0.3,0.1-0.5,0.2-0.8,0.4c-0.3,0.1-0.5,0.2-0.8,0.2 c-0.5,0.2-1.1,0.2-1.6,0.1L12,17V5.3l0.3-0.1c0.5-0.1,1.1-0.1,1.6,0.1c0.3,0.1,0.5,0.1,0.8,0.2c0.3,0.1,0.5,0.2,0.8,0.4 c0,0,0,0,0,0c0.1,0.1,0.3,0.2,0.5,0.3c0.3,0.2,0.5,0.4,0.7,0.5c0.3,0.2,0.5,0.5,0.7,0.8c0.1,0.2,0.2,0.3,0.2,0.5 c0.1,0.3,0.2,0.5,0.3,0.8c0.1,0.3,0.2,0.5,0.2,0.8C18.8,11.5,18.8,12.5,18.5,14.2z"/>
-  </svg>
-);
+)
+export const DockerIcon = SimpleIcon(siDocker)
+export const JenkinsIcon = SimpleIcon(siJenkins)
+export const KubernetesIcon = SimpleIcon(siKubernetes)
+export const TerraformIcon = SimpleIcon(siTerraform)
+export const GitIcon = SimpleIcon(siGit)
+export const AnsibleIcon = SimpleIcon(siAnsible)
+export const PrometheusIcon = SimpleIcon(siPrometheus)
+export const GrafanaIcon = SimpleIcon(siGrafana)
+export const PythonIcon = SimpleIcon(siPython)
+export const GCPIcon = SimpleIcon(siGooglecloud)
