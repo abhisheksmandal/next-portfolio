@@ -57,9 +57,10 @@ export function InteractiveTerminal({ onExit }: InteractiveTerminalProps) {
     if (command === 'clear') {
         setLines([]);
     } else if (command === 'exit') {
-        newLines.push({ type: 'output', text: commands.exit });
-        setLines(newLines);
-        setTimeout(onExit, 500); // Close after a short delay
+      const output = commands.exit;
+      newLines.push({ type: 'output', text: typeof output === 'function' ? output() : output });
+      setLines(newLines);
+      setTimeout(onExit, 500); // Close after a short delay
     } else if (command in commands) {
       const output = commands[command];
       newLines.push({ type: 'output', text: typeof output === 'function' ? output() : output });

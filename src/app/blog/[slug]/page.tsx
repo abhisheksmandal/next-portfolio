@@ -3,11 +3,8 @@ import { notFound } from 'next/navigation';
 import { Separator } from '@/components/ui/separator';
 import ReactMarkdown from 'react-markdown';
 
-type Props = {
-  params: { slug: string };
-};
-
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata(props: any) {
+  const { params } = props;
   const post = posts.find((p) => p.slug === params.slug);
   if (!post) {
     return {};
@@ -24,7 +21,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function PostPage({ params }: Props) {
+export default function PostPage(props: any) {
+  const { params } = props;
   const post = posts.find((p) => p.slug === params.slug);
 
   if (!post) {

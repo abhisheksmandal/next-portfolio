@@ -7,6 +7,7 @@ import { Github, ExternalLink } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { ProjectDetailsModal } from "@/components/project-details-modal";
+import React from 'react'
 import { BackButton } from '@/components/back-button'
 import projectsData from "@/data/projects.json";
 
@@ -19,7 +20,9 @@ export default function ProjectsPage() {
   return (
     <div className="container mx-auto px-4 py-24 md:py-32">
       <header className="text-center mb-12">
-        <BackButton />
+        <React.Suspense fallback={null}>
+          <BackButton />
+        </React.Suspense>
         <h1 className="text-4xl md:text-5xl font-bold font-headline">{projectsData.pageHeader}</h1>
         <p className="mt-4 text-lg text-muted-foreground">
           {projectsData.pageSubheader}

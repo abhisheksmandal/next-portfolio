@@ -1,6 +1,7 @@
 
 import { Separator } from "@/components/ui/separator";
 import { JourneyTimeline } from "@/components/journey-timeline";
+import React from 'react'
 import { BackButton } from '@/components/back-button'
 import journeyData from "@/data/journey.json";
 
@@ -13,7 +14,9 @@ export default function JourneyPage() {
   return (
     <div className="container mx-auto px-4 py-24 md:py-32">
       <header className="text-center mb-12">
-        <BackButton />
+        <React.Suspense fallback={null}>
+          <BackButton />
+        </React.Suspense>
         <h1 className="text-4xl md:text-5xl font-bold font-headline">{journeyData.pageHeader}</h1>
         <p className="mt-4 text-lg text-muted-foreground">
           {journeyData.pageSubheader}

@@ -11,7 +11,7 @@ export type JourneyEvent = {
   icon: string;
 };
 
-export const journey: JourneyEvent[] = journeyEvents;
+export const journey: JourneyEvent[] = journeyEvents as unknown as JourneyEvent[];
 
 export const journeyIconMap: { [key: string]: React.ElementType } = {
     Briefcase,

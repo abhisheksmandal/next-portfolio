@@ -1,3 +1,4 @@
+import React from "react";
 import { posts } from "@/lib/posts";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -14,7 +15,9 @@ export default function BlogPage() {
   return (
     <div className="container mx-auto px-4 py-24 md:py-32">
       <header className="text-center mb-12">
-        <BackButton />
+        <React.Suspense fallback={null}>
+          <BackButton />
+        </React.Suspense>
         <h1 className="text-4xl md:text-5xl font-bold font-headline">{blogData.pageHeader}</h1>
         <p className="mt-4 text-lg text-muted-foreground">
           {blogData.pageSubheader}
