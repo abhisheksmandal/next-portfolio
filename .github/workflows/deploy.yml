@@ -37,7 +37,8 @@ jobs:
 
       - name: Sync to S3
         run: |
+          # Do not use ACLs if the bucket enforces 'Bucket owner enforced' (ACLs disabled).
+          # Use a bucket policy to make objects public instead.
           aws s3 sync ./out s3://${{ secrets.S3_BUCKET }} \
             --delete \
-            --acl public-read \
             --cache-control "public, max-age=31536000, immutable"
