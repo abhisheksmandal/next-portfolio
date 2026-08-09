@@ -32,7 +32,7 @@ export function BackButton() {
     } catch (e) {
       setShow(window.history.length > 1)
     }
-  }, [])
+  }, [searchParams])
 
   if (!show) return null
 

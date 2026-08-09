@@ -15,18 +15,22 @@ import {
 import React from 'react'
 
 function SimpleIcon(icon: any) {
-  if (!icon) return (props: React.SVGProps<SVGSVGElement>) => null
-  return (props: React.SVGProps<SVGSVGElement>) => (
-    <svg
-      role="img"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <title>{icon.title}</title>
-      <path d={icon.path} fill={`#${icon.hex}`} />
-    </svg>
-  )
+  const IconComponent = (props: React.SVGProps<SVGSVGElement>) => {
+    if (!icon) return null
+    return (
+      <svg
+        role="img"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+      >
+        <title>{icon.title}</title>
+        <path d={icon.path} fill={`#${icon.hex}`} />
+      </svg>
+    )
+  }
+  IconComponent.displayName = `SimpleIcon(${icon?.title ?? "unknown"})`
+  return IconComponent
 }
 
 // simple-icons package doesn't expose an AWS/Amazon icon in this release,

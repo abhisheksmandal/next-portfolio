@@ -18,9 +18,8 @@ ENV NODE_ENV=production
 
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/next.config.* ./
+COPY --from=builder /app/out ./out
 
 EXPOSE 3000
-CMD ["npm", "run", "start"]
+CMD ["node_modules/.bin/serve", "out", "-p", "3000"]
 

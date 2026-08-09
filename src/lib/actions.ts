@@ -1,5 +1,3 @@
-"use server";
-
 import * as z from "zod";
 
 const formSchema = z.object({
