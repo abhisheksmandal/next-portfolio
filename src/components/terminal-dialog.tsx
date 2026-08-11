@@ -22,7 +22,7 @@ export function TerminalDialog() {
         <Button
           variant="outline"
           size="lg"
-          className="fixed bottom-8 left-8 z-50 rounded-full h-14 w-14 p-0"
+          className="hidden md:flex fixed bottom-8 left-8 z-50 rounded-full h-14 w-14 p-0"
           aria-label="Open interactive terminal"
         >
           <Terminal className="h-7 w-7" />

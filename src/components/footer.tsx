@@ -14,7 +14,7 @@ export function Footer() {
   const copyrightText = footerData.copyright.replace('{year}', year.toString());
 
   return (
-    <footer className="bg-secondary/50 dark:bg-card/50">
+    <footer className="bg-secondary/50 dark:bg-card/50 pb-16 md:pb-0">
       <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
         <p className="text-sm text-muted-foreground mb-4 md:mb-0">
           {copyrightText}
